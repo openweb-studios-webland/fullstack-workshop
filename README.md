@@ -2,6 +2,10 @@
 
 Welcome! Today, we're going to learn how to build a fullstack GraphQL app using Apollo Server, Apollo Engine, and Apollo Client. Let's get started! 🚀
 
+## Slides
+
+If you need to reference the slides, you can view them [here](https://fullstack-workshop-apollo.surge.sh).
+
 ## Setup instructions
 
 Since we have a lot of material to cover, we're going to complete all the exercises within the browser. This ensures that we minimize our time spent on environment setup and maximize our time learning cool stuff about GraphQL.
