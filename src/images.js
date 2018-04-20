@@ -8,12 +8,15 @@ import schema from './assets/schema.png';
 import dataloader from './assets/dataloader.png';
 import resolvers from './assets/resolvers.png';
 import query from './assets/query.png';
+import stores from './assets/stores.png';
+import gqlInterface from './assets/interface.png';
 import engine from './assets/engine.png';
 import spectrum from './assets/spectrum.png';
 import peggy from './assets/PeggyPhoto.jpg';
 import gqlOverRest from './assets/gql-over-rest.png';
 import schemaDev from './assets/schema-dev.png';
 import dataFlow from './assets/data-flow.png';
+import whatIs from './assets/what-is-apollo.png';
 
 export default {
   apolloBkgr,
@@ -32,4 +35,7 @@ export default {
   spectrum,
   cacheHits,
   dataFlow,
+  whatIs,
+  stores,
+  gqlInterface,
 };

@@ -194,8 +194,10 @@ export default class Presentation extends React.Component {
             ))}
           </List>
           <Text textSize={size.small} margin="0 0 32px 0">
-            2. Navigate to the workshop README. If you ever get stuck, check the
-            FAQ for answers. 😊
+            2. Navigate to the{' '}
+            <Link href="https://github.com/apollographql/fullstack-workshop">
+              workshop README
+            </Link>. If you ever get stuck, check the FAQ for answers. 😊
           </Text>
           <Text textSize={size.small}>
             3. All development will be done in the browser via{' '}
@@ -325,7 +327,7 @@ export default class Presentation extends React.Component {
             The Apollo platform is a family of client & server tools designed to
             help you implement GraphQL in your application.
           </Text>
-          // insert diagram here
+          <Image src={images.whatIs} width="100%" />
         </Slide>
         <Slide>
           <Heading>Server checkpoint 1/5 🚦</Heading>
@@ -365,9 +367,9 @@ export default class Presentation extends React.Component {
           <Text margin="20px 0" textSize={size.extraSmall}>
             Today, we're setting up Apollo Server for Express, but there are
             many other extensions for Hapi, Koa, and serverless options like
-            Azure Functions and AWS Lambda.
+            Azure Functions and AWS Lambda. Apollo Engine and graphql-tools are
+            already built into Apollo Server for you.
           </Text>
-          // insert glitch project embed here
         </Slide>
         <Slide>
           <Heading>Recap: Apollo Server</Heading>
@@ -421,7 +423,7 @@ export default class Presentation extends React.Component {
             {[
               'What is Apollo Engine?',
               'Setting up Apollo Server',
-              'Exploring our API in GraphQL Playground',
+              'Exploring in GraphQL Playground',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
         </Slide>
@@ -889,7 +891,17 @@ export default class Presentation extends React.Component {
             JavaScript. Let's try a query without a view layer integration
             first.
           </Text>
-          // add codesandbox embed
+          <iframe
+            src="https://codesandbox.io/embed/github/apollographql/fullstack-workshop-client/tree/01-apollo-client/"
+            style={{
+              width: '100%',
+              height: '500px',
+              border: 0,
+              borderRadius: '4px',
+              overflow: 'hidden',
+            }}
+            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+          />
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 What is React Apollo?</Heading>
@@ -977,21 +989,17 @@ export default class Presentation extends React.Component {
               here
             </Link>.
           </Text>
-        </Slide>
-        <Slide>
-          <Heading>Pagination</Heading>
-          <Text margin="20px 0" textSize={size.extraSmall}>
-            The object passed into the Query component's render prop function
-            contains more than just your query's data! It also has helpful
-            functions for polling, refetching, pagination, and more!
-          </Text>
-          <CodePane
-            source={client.fetchMore}
-            lang="javascript"
-            textSize="1.2em"
-            style={{ maxWidth: 'none' }}
-            theme="light"
-          />
+          <List ordered>
+            {[
+              'Navigate to components/MovieList and read the Part 1 instructions. No need to do Part 2!',
+              `We haven't covered fragments yet but I think you all can handle it! Check the Apollo docs if you need help.`,
+              `Delete the seed data when you're finished`,
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
         </Slide>
         <Slide>
           <Heading>💪 Pagination</Heading>
@@ -1019,6 +1027,97 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
+          <Heading>Authentication</Heading>
+          <CodePane
+            style={{ maxWidth: 'none' }}
+            margin="30px 0px"
+            source={client.auth}
+            theme="light"
+            lang="javascript"
+          />
+        </Slide>
+        <Slide>
+          <Heading>Mutation components</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The Mutation component is what you’ll use to trigger mutations from
+            your UI. To create a Mutation component, just pass a GraphQL query
+            string wrapped with the <Code>gql</Code> function to
+            <Code>this.props.mutation</Code> and provide a function to{' '}
+            <Code>this.props.children</Code> that tells React what to render.
+          </Text>
+          <Text
+            textSize={size.small}
+            textColor="tertiary"
+            margin="20px 0 20px 0"
+          >
+            1. Use the <Code>gql</Code> function to parse your query string into
+            an AST
+          </Text>
+          <CodePane
+            source={client.mutation}
+            theme="light"
+            lang="jsx"
+            style={{ maxWidth: 'none' }}
+            textSize=".8em"
+          />
+        </Slide>
+        <Slide>
+          <Heading>Mutation components</Heading>
+          <Text
+            textSize={size.small}
+            textColor="tertiary"
+            margin="20px 0 20px 0"
+          >
+            2. Trigger the mutation with the first argument to the render prop
+            function
+          </Text>
+          <CodePane
+            source={client.mutationComponent}
+            theme="light"
+            lang="jsx"
+            style={{ maxWidth: 'none' }}
+            textSize=".7em"
+          />
+        </Slide>
+        <Slide>
+          <Heading>💪 Mutation components</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Now it's your turn! Try building some Mutation components to update
+            data in our GraphQL API. If you get stuck, you can view docs on
+            props and the render prop function{' '}
+            <Link href="https://www.apollographql.com/docs/react/essentials/mutations.html#api">
+              here
+            </Link>.
+          </Text>
+          <List>
+            {[
+              'Navigate to components/Login and read the Part 1 instructions',
+              `Check the Apollo docs on the props configuration`,
+              `Use Apollo DevTools if you get stuck`,
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>Updating the Apollo cache</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Sometimes there is a mismatch between our server data and what we
+            see in our UI after a mutation. This especially occurs when we're
+            adding or removing items from a list. We need to tell Apollo Client
+            to manually update the cache instead of relying on __typename + id
+            to keep everything up to date.
+          </Text>
+          <CodePane
+            source={client.update}
+            lang="jsx"
+            theme="light"
+            style={{ maxWidth: 'none' }}
+          />
+        </Slide>
+        <Slide>
           <Heading>Client checkpoint 3/4 🚦</Heading>
           <List>
             {[
@@ -1027,6 +1126,19 @@ export default class Presentation extends React.Component {
               'Updating data in the Apollo cache',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
+        </Slide>
+        <Slide>
+          <Heading>2017: Separate stores</Heading>
+          <Image
+            src={images.stores}
+            width="90%"
+            margin="30px 0"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
+          <Heading>2018: One unified interface</Heading>
+          <Image src={images.gqlInterface} margin="30px 0" width="100%" />
         </Slide>
         <Slide>
           <Heading>Client checkpoint 4/4 🚦</Heading>
