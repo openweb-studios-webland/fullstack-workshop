@@ -6,6 +6,10 @@ Welcome! Today, we're going to learn how to build a fullstack GraphQL app using 
 
 If you need to reference the slides, you can view them [here](https://fullstack-workshop-apollo.surge.sh).
 
+## Survey
+
+Please take the post-workshop survey!! Your honesty is important to helping me improve for next time: https://goo.gl/forms/KHE9Ipd8u8UFg79G2
+
 ## Setup instructions
 
 Since we have a lot of material to cover, we're going to complete all the exercises within the browser. This ensures that we minimize our time spent on environment setup and maximize our time learning cool stuff about GraphQL.
