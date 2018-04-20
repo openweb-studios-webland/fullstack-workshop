@@ -52,6 +52,9 @@ const overrides = {
       fontSize: size.medium,
       lineHeight: 1.5,
     },
+    code: {
+      fontSize: '0.75em',
+    },
     codePane: {
       margin: 0,
       minWidth: '400px',

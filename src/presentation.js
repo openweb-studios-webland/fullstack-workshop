@@ -27,6 +27,7 @@ import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-graphql';
 
 import * as server from './code/server';
+import * as client from './code/client';
 
 // Preload images
 import preloader from 'spectacle/lib/utils/preloader';
@@ -372,45 +373,44 @@ export default class Presentation extends React.Component {
           <Heading>Recap: Apollo Server</Heading>
           <List ordered>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
+              <Code>
                 npm install apollo-server apollo-engine graphql --save
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
-                {`import { ApolloServer } from 'apollo-server/express';`}
+              <Code>
+                {`const { ApolloServer } = require('apollo-server');`}
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
+              <Code>
                 {`const server = new ApolloServer({ typeDefs, resolvers });`}
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">{`server.listen().then(({ url }) => console.log(url))`}</Code>
+              <Code
+              >{`server.listen().then(({ url }) => console.log(url))`}</Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              To set up Apollo Engine, add{' '}
-              <Code textSize=".75em">ENGINE_API_KEY</Code> as an environment
-              variable and pass <Code textSize=".75em">engine: true</Code> to
-              the server config
+              To set up Apollo Engine, add <Code>ENGINE_API_KEY</Code> as an
+              environment variable and pass <Code>engine: true</Code> to the
+              server config
             </ListItem>
             <ListItem textSize={size.small}>
-              Your GraphQL server is at <Code textSize=".75em">/graphql</Code>{' '}
-              and your GraphiQL IDE is set up at <Code textSize=".75em">/</Code>{' '}
-              🎉
+              Your GraphQL server is at <Code>/graphql</Code> and your GraphQL
+              Playground IDE is set up at <Code>/</Code> 🎉
             </ListItem>
           </List>
         </Slide>
         <Slide>
-          <Heading>GraphiQL 😍</Heading>
+          <Heading>GraphQL Playground 😍</Heading>
           <div
-            class="glitch-embed-wrap"
+            className="glitch-embed-wrap"
             style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
           >
             <iframe
-              src="https://glitch.com/embed/#!/embed/thunder-blowgun?path=README.md&previewSize=99"
-              alt="thunder-blowgun on glitch"
+              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
+              alt="fullstack-workshop-server on glitch"
               style={{ height: '100%', width: '100%', border: 0 }}
             />
           </div>
@@ -421,7 +421,7 @@ export default class Presentation extends React.Component {
             {[
               'What is Apollo Engine?',
               'Setting up Apollo Server',
-              'Exploring our API in GraphiQL',
+              'Exploring our API in GraphQL Playground',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
         </Slide>
@@ -443,7 +443,7 @@ export default class Presentation extends React.Component {
             <List>
               {[
                 'Your schema is strongly typed',
-                'You can explore your schema in GraphiQL',
+                'You can explore your schema in GraphQL Playground',
                 'Pass your schema to the typeDefs property of Apollo Server',
               ].map(item => (
                 <ListItem key={item} textSize={size.small}>
@@ -514,7 +514,7 @@ export default class Presentation extends React.Component {
               'The poster field should have an argument of size',
               'The genres field is non-nullable',
               'The cast field returns an array of object types',
-              'Bonus: Explore your schema in GraphiQL when you finish',
+              'Bonus: Explore your schema in GraphQL Playground when you finish',
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
                 {item}
@@ -534,7 +534,7 @@ export default class Presentation extends React.Component {
               'Write a movie query to fetch a single movie by id',
               'Write a toggleLike mutation to toggle if a movie is liked',
               'Write a likes query that fetches all the liked movies',
-              'Bonus: Explore your schema in GraphiQL when you finish',
+              'Bonus: Explore your schema in GraphQL Playground when you finish',
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
                 {item}
@@ -598,9 +598,9 @@ export default class Presentation extends React.Component {
           <List>
             {[
               'Navigate to the resolvers folder and implement the resolvers',
-              'Start with Query and Mutation, then move onto Cast and Movie',
+              'Start with Query and Mutation, then move onto Movie',
               'Look at the models folder for your data fetching functions',
-              'Test out that your resolvers work by running queries in GraphiQL',
+              'Test out that your resolvers work by running queries in GraphQL Playground',
             ].map(item => (
               <ListItem key={item} margin="30px 0" textSize={size.small}>
                 {item}
@@ -610,7 +610,16 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Running queries</Heading>
-          // put glitch embed here
+          <div
+            className="glitch-embed-wrap"
+            style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
+          >
+            <iframe
+              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
+              alt="fullstack-workshop-server on glitch"
+              style={{ height: '100%', width: '100%', border: 0 }}
+            />
+          </div>
         </Slide>
         <Slide>
           <Heading>Project structure</Heading>
@@ -662,7 +671,7 @@ export default class Presentation extends React.Component {
           <List ordered>
             {[
               'Navigate to the fullstack-workshop service in Engine',
-              'Run some queries in GraphiQL',
+              'Run some queries in GraphQL Playground',
               'View the tracing and performance data for the operations you just ran by clicking on the left hand menu',
               'What resolvers are slow? What queries can we optimize? Write down your observations.',
             ].map(item => (
@@ -810,6 +819,44 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
+          <Heading>Apollo Client internals</Heading>
+          <Layout.Row>
+            {[
+              {
+                header: 'Apollo Cache',
+                items: [
+                  'Normalizes and stores GraphQL data',
+                  'We recommend the InMemoryCache',
+                  `Automatic updates`,
+                ],
+              },
+              {
+                header: 'Apollo Link',
+                items: [
+                  'Interface for managing the request cycle',
+                  'Chainable and customizable',
+                  `Returns an Observable`,
+                ],
+              },
+            ].map(({ items, header }) => (
+              <div key={header} style={{ width: '46%', marginTop: '40px' }}>
+                <Text bold size={size.small}>
+                  {header}
+                </Text>
+                <Layout.Cell color={colors.lightGrey}>
+                  <List>
+                    {items.map(item => (
+                      <ListItem key={item} textSize={size.small}>
+                        {item}
+                      </ListItem>
+                    ))}
+                  </List>
+                </Layout.Cell>
+              </div>
+            ))}
+          </Layout.Row>
+        </Slide>
+        <Slide>
           <Heading>👩🏼‍💻 Apollo Boost</Heading>
           <Text margin="30px 0" textSize={size.extraSmall}>
             The simplest way to get started with Apollo Client is by using
@@ -820,17 +867,13 @@ export default class Presentation extends React.Component {
           </Text>
           <List ordered margin="0px">
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
-                npm install apollo-boost graphql-tag graphql --save
-              </Code>
+              <Code>npm install apollo-boost graphql-tag graphql --save</Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
-                {`import ApolloClient from 'apollo-boost';`}
-              </Code>
+              <Code>{`import ApolloClient from 'apollo-boost';`}</Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code textSize=".75em">
+              <Code>
                 {`const client = new ApolloClient({ uri: 'https://fullstack-workshop.glitch.me/graphql' });`}
               </Code>
             </ListItem>
@@ -849,6 +892,24 @@ export default class Presentation extends React.Component {
           // add codesandbox embed
         </Slide>
         <Slide>
+          <Heading>👩🏼‍💻 What is React Apollo?</Heading>
+          <Text margin="30px 0" textSize={size.extraSmall}>
+            Manually firing a query isn't too bad, but what if we want to track
+            loading state or execute more complicated features? React Apollo is
+            Apollo Client's view layer integration for React that helps us do
+            all that and more. To start using React Apollo, wrap your app in an
+            ApolloProvider component.
+          </Text>
+          <Appear>
+            <CodePane
+              source={client.apolloProvider}
+              style={{ maxWidth: 'none' }}
+              theme="light"
+              lang="jsx"
+            />
+          </Appear>
+        </Slide>
+        <Slide>
           <Heading>Client checkpoint 1/4 🚦</Heading>
           <List>
             {[
@@ -857,6 +918,95 @@ export default class Presentation extends React.Component {
               'What is React Apollo?',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
+        </Slide>
+        <Slide>
+          <Heading>Query components</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The Query component is one of the most important building blocks of
+            your Apollo application. To create a Query component, just pass a
+            GraphQL query string wrapped with the <Code>gql</Code> function to
+            <Code>this.props.query</Code> and provide a function to{' '}
+            <Code>this.props.children</Code> that tells React what to render.
+          </Text>
+          <Text
+            textSize={size.small}
+            textColor="tertiary"
+            margin="20px 0 20px 0"
+          >
+            1. Use the <Code>gql</Code> function to parse your query string into
+            an AST
+          </Text>
+          <CodePane
+            source={client.query}
+            theme="light"
+            lang="graphql"
+            textSize=".8em"
+          />
+        </Slide>
+        <Slide>
+          <Heading>Query components</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The Query component is one of the most important building blocks of
+            your Apollo application. To create a Query component, just pass a
+            GraphQL query string wrapped with the <Code>gql</Code> function to
+            <Code>this.props.query</Code> and provide a function to{' '}
+            <Code>this.props.children</Code> that tells React what to render.
+          </Text>
+          <Text
+            textSize={size.small}
+            textColor="tertiary"
+            margin="20px 0 20px 0"
+          >
+            2. Create a Query component with a render prop function
+          </Text>
+          <CodePane
+            source={client.queryComponent}
+            theme="light"
+            lang="jsx"
+            style={{ maxWidth: 'none' }}
+            textSize=".8em"
+          />
+        </Slide>
+        <Slide>
+          <Heading>💪 Query components</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Now it's your turn! Try building some Query components to fetch data
+            from our GraphQL API. If you get stuck, you can view docs on props
+            and the render prop function{' '}
+            <Link href="https://www.apollographql.com/docs/react/essentials/queries.html#api">
+              here
+            </Link>.
+          </Text>
+        </Slide>
+        <Slide>
+          <Heading>Pagination</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The object passed into the Query component's render prop function
+            contains more than just your query's data! It also has helpful
+            functions for polling, refetching, pagination, and more!
+          </Text>
+          <CodePane
+            source={client.fetchMore}
+            lang="javascript"
+            textSize="1.2em"
+            style={{ maxWidth: 'none' }}
+            theme="light"
+          />
+        </Slide>
+        <Slide>
+          <Heading>💪 Pagination</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The object passed into the Query component's render prop function
+            contains more than just your query's data! It also has helpful
+            functions for polling, refetching, pagination, and more!
+          </Text>
+          <CodePane
+            source={client.fetchMore}
+            lang="javascript"
+            textSize="1.2em"
+            style={{ maxWidth: 'none' }}
+            theme="light"
+          />
         </Slide>
         <Slide>
           <Heading>Client checkpoint 2/4 🚦</Heading>
@@ -896,9 +1046,9 @@ export default class Presentation extends React.Component {
           <Heading>What's next 🚀</Heading>
           <List>
             {[
-              'Implement a favorites screen',
-              'Optimize your schema with Engine',
-              'Server-side rendering',
+              'Add additional data to the movie card',
+              'Convert setState calls to link-state',
+              'Build out more of your schema',
               'Write tests by mocking your server',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
