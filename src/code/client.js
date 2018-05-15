@@ -95,3 +95,52 @@ export const update = `<Mutation
   }}
 >
 </Mutation>`;
+
+export const definition = `class Click extends React.Component {
+  state = { clicked: false }
+
+  handleClick = () => {
+    this.setState(prevState => ({ clicked: !prevState.clicked }))
+  }
+
+  render = () => (
+    <div onClick={this.handleClick}>
+      {this.props.render(this.state.clicked)}
+    </div>
+  )
+}`;
+
+export const click = `const Item = () => (
+  <Click
+    render={clicked => {
+      return clicked
+        ? <p>Clicked!</p>
+        : <p>Click me!</p>
+    }}
+  />
+);`;
+
+export const fragment1 = `CommentsPage.fragments = {
+  comment: gql\`
+    fragment CommentsPageComment on Comment {
+      id
+      postedBy {
+        login
+        html_url
+      }
+      createdAt
+      content
+    }
+  \`,
+};`;
+
+export const fragment2 = `export const COMMENT_QUERY = gql\`
+query Comment($repoName: String!) {
+  entry(repoFullName: $repoName) {
+    comments {
+      ...CommentsPageComment
+    }
+  }
+}
+\${CommentsPage.fragments.comment}
+\`;`;

@@ -102,15 +102,13 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading>What's with the Post-its?! 🚦</Heading>
           <List>
-            {[
-              `✅ I'm doing great!`,
-              `🤔 Hmm, can you repeat that?`,
-              `🛑 Help!! I'm totally lost.`,
-            ].map(item => (
-              <Text key={item} style={{ lineHeight: 1.5 }}>
-                {item}
-              </Text>
-            ))}
+            {[`✅ I'm doing great!`, `🛑 Help!! I'm totally lost.`].map(
+              item => (
+                <Text key={item} style={{ lineHeight: 1.5 }}>
+                  {item}
+                </Text>
+              ),
+            )}
           </List>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
@@ -932,6 +930,37 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
+          <Heading>What is a render prop?</Heading>
+          <CodePane
+            theme="light"
+            source={client.definition}
+            lang="jsx"
+            textSize="1em"
+            style={{ maxWidth: 'none' }}
+          />
+        </Slide>
+        <Slide>
+          <Layout.Row align="center">
+            <Text
+              textColor="tertiary"
+              margin="0px"
+              bold
+              textSize={size.medium}
+              style={{ textAlign: 'left', flex: 1 }}
+            >
+              A render prop is a function that tells your component<br />what to
+              render.
+            </Text>
+            <CodePane
+              theme="light"
+              source={client.click}
+              lang="jsx"
+              textSize="1.2em"
+              style={{ flex: 1 }}
+            />
+          </Layout.Row>
+        </Slide>
+        <Slide>
           <Heading>Query components</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             The Query component is one of the most important building blocks of
@@ -980,6 +1009,32 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
+          <Heading>Fragments</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            If you have two queries that share a lot of the same fields, you
+            should create a fragment to share fields between them. To use a
+            fragment, define the fragment at the bottom of your query document
+            and use the spread operator to copy the fragment's fields into your
+            query.
+          </Text>
+          <Layout.Row>
+            <CodePane
+              source={client.fragment1}
+              theme="light"
+              lang="graphql"
+              style={{ maxWidth: 'none' }}
+              textSize=".8em"
+            />
+            <CodePane
+              source={client.fragment2}
+              theme="light"
+              lang="graphql"
+              style={{ maxWidth: 'none' }}
+              textSize=".8em"
+            />
+          </Layout.Row>
+        </Slide>
+        <Slide>
           <Heading>💪 Query components</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Now it's your turn! Try building some Query components to fetch data
@@ -992,7 +1047,7 @@ export default class Presentation extends React.Component {
           <List ordered>
             {[
               'Navigate to components/MovieList and read the Part 1 instructions. No need to do Part 2!',
-              `We haven't covered fragments yet but I think you all can handle it! Check the Apollo docs if you need help.`,
+              `Recall what we just learned about fragments to share data between the two queries`,
               `Delete the seed data when you're finished`,
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
@@ -1133,12 +1188,17 @@ export default class Presentation extends React.Component {
             src={images.stores}
             width="90%"
             margin="30px 0"
-            style={{ alignSelf: 'center' }}
+            style={{ alignSelf: 'center', borderRadius: '10px' }}
           />
         </Slide>
         <Slide>
           <Heading>2018: One unified interface</Heading>
-          <Image src={images.gqlInterface} margin="30px 0" width="100%" />
+          <Image
+            src={images.gqlInterface}
+            margin="30px 0"
+            width="100%"
+            style={{ borderRadius: '10px' }}
+          />
         </Slide>
         <Slide>
           <Heading>Client checkpoint 4/4 🚦</Heading>
@@ -1151,8 +1211,10 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
-          <Heading>Ask me anything!</Heading>
+          <Heading>Ask us anything!</Heading>
           <Text textColor="primary">@peggyrayzis</Text>
+          <Text textColor="primary">@jakedawkins</Text>
+          <Text textColor="primary">@imranolas</Text>
         </Slide>
         <Slide>
           <Heading>What's next 🚀</Heading>
