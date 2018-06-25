@@ -5,6 +5,7 @@ export const Row = styled('div')(props => ({
   justifyContent: 'space-between',
   width: '100%',
   alignItems: props.align,
+  ...props.style,
 }));
 
 export const Column = styled('div')(props => ({

@@ -144,3 +144,15 @@ query Comment($repoName: String!) {
 }
 \${CommentsPage.fragments.comment}
 \`;`;
+
+export const stateMgmt1 = `const GET_DOG = gql\`
+  query getDogByBreed($breed: String!) {
+    dog(breed: $breed) {
+      images {
+        url
+        id
+        isLiked @client
+      }
+    }
+  }
+\`;`;

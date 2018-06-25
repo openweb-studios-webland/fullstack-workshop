@@ -1,5 +1,4 @@
 import apolloBkgr from './assets/apollo-bkgr.png';
-import engineCaching from './assets/engine-caching.png';
 import engineTracing from './assets/engine-tracing.png';
 import cacheHits from './assets/cache-hits.png';
 import apolloLogo from './assets/apollo.svg';
@@ -17,6 +16,15 @@ import gqlOverRest from './assets/gql-over-rest.png';
 import schemaDev from './assets/schema-dev.png';
 import dataFlow from './assets/data-flow.png';
 import whatIs from './assets/what-is-apollo.png';
+import platform from './assets/platform.png';
+import engine3 from './assets/engine3.png';
+import communication from './assets/communication.png';
+import pizza from './assets/pizza.jpg';
+import uglyPizza from './assets/ugly-pizza.jpg';
+import astroDaisy from './assets/astrodaisy-blank.png';
+import unifiedState from './assets/unified-state.png';
+import reduceComplexity from './assets/reduce-complexity.png';
+import dataSource from './assets/data-source.png';
 
 export default {
   apolloBkgr,
@@ -27,7 +35,6 @@ export default {
   query,
   dataloader,
   gqlOverRest,
-  engineCaching,
   engineTracing,
   resolvers,
   engine,
@@ -38,4 +45,13 @@ export default {
   whatIs,
   stores,
   gqlInterface,
+  platform,
+  uglyPizza,
+  pizza,
+  communication,
+  engine3,
+  astroDaisy,
+  unifiedState,
+  reduceComplexity,
+  dataSource,
 };

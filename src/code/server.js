@@ -1,14 +1,15 @@
-export const restExample = `GET /api/sandwich/bread
-GET /api/sandwich/meat
-GET /api/sandwich/toppings`;
+export const restExample = `GET /api/pizza/cheese
+GET /api/pizza/supreme
+GET /api/pizza/margherita`;
 
 export const gqlExample = `query {
-  sandwich {
-    bread {
-      baguette
+  pizza {
+    cheese {
+      mozzarella
     }
-    meat {
-      turkey
+    toppings {
+      basil
+      mushrooms
     }
   }
 }`;
@@ -47,4 +48,21 @@ export const cacheControl = `type Cast @cacheControl(maxAge: 600) {
   photo(size: Int): String
   gender: String
   character: String
+}`;
+
+export const dataSource = `class MovieAPI extends RESTDataSource {
+  baseURL = 'https://movieapi.com/';
+
+  async getMostViewedMovies() {
+    const body = await this.get('movies', {
+      per_page: 10,
+      order_by: 'most_viewed',
+    });
+    return body.results;
+  }
+  willSendRequest(request: Request) {
+    request.headers.set('Authorization',
+      this.context.token
+    );
+  }
 }`;

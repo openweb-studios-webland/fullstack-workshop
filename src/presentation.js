@@ -16,6 +16,7 @@ import {
   CodePane,
   Code,
   Link,
+  Notes,
 } from 'spectacle';
 
 // Spectacle Theme & Layout components
@@ -44,7 +45,7 @@ export default class Presentation extends React.Component {
       <Deck
         transition={['fade']}
         transitionDuration={500}
-        contentWidth={1400}
+        contentWidth={1500}
         contentHeight={800}
         controls={false}
         progress="none"
@@ -209,6 +210,9 @@ export default class Presentation extends React.Component {
           <Heading>Apollo Server</Heading>
         </Slide>
         <Slide>
+          <Image src={images.communication} width="100%" />
+        </Slide>
+        <Slide>
           <Heading>What is GraphQL?</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             GraphQL is a typed query language for your API. It enables the
@@ -235,15 +239,11 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>REST vs. GraphQL</Heading>
-          <Text margin="30px 0" textSize={size.extraSmall}>
-            With GraphQL, you can accomplish the same features as REST with less
-            effort, a more reliable result, and improved performance.
-          </Text>
+          <Heading margin="0 0 30px 0">REST vs. GraphQL 🍕</Heading>
           <Layout.Row align="flex-start">
             <Appear>
-              <Layout.Column>
-                <Text bold textSize={size.small}>
+              <Layout.Column margin="0 20px 0 0">
+                <Text bold textSize={size.medium}>
                   REST
                 </Text>
                 <CodePane
@@ -252,21 +252,21 @@ export default class Presentation extends React.Component {
                   lang="bash"
                 />
                 <List>
-                  <ListItem textSize={size.extraSmall}>
+                  <ListItem textSize={size.small}>
                     Filter down the data
                   </ListItem>
-                  <ListItem textSize={size.extraSmall}>
+                  <ListItem textSize={size.small}>
                     Perform waterfall requests for related data
                   </ListItem>
-                  <ListItem textSize={size.extraSmall}>
+                  <ListItem textSize={size.small}>
                     Aggregate the data yourself
                   </ListItem>
                 </List>
               </Layout.Column>
             </Appear>
             <Appear>
-              <Layout.Column>
-                <Text textSize={size.small} bold>
+              <Layout.Column margin="0 0 0 20px">
+                <Text textSize={size.medium} bold>
                   GraphQL
                 </Text>
                 <Layout.Row>
@@ -274,21 +274,41 @@ export default class Presentation extends React.Component {
                     theme="light"
                     source={server.gqlExample}
                     lang="graphql"
-                    textSize="0.8em"
-                    style={{ minWidth: '300px' }}
+                    style={{ minWidth: '350px' }}
                   />
-                  <List>
-                    <ListItem textSize={size.extraSmall}>
-                      You get back exactly what you ask for
+                  <List margin="0px">
+                    <ListItem textSize={size.small}>
+                      Receive exactly what you ask for
                     </ListItem>
-                    <ListItem textSize={size.extraSmall}>
+                    <ListItem textSize={size.small}>
                       No aggregating or filtering data
-                    </ListItem>
-                    <ListItem textSize={size.extraSmall}>
-                      Same REST calls under the hood
                     </ListItem>
                   </List>
                 </Layout.Row>
+              </Layout.Column>
+            </Appear>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Layout.Row align="flex-start">
+            <Layout.Column>
+              <Heading margin="0 0 40px 0">REST</Heading>
+              <Image
+                src={images.uglyPizza}
+                height="450px"
+                style={{ borderRadius: '15px' }}
+              />
+              <Text>A hot mess 😞</Text>
+            </Layout.Column>
+            <Appear>
+              <Layout.Column>
+                <Heading margin="0 0 40px 0">GraphQL</Heading>
+                <Image
+                  src={images.pizza}
+                  height="450px"
+                  style={{ borderRadius: '15px' }}
+                />
+                <Text>Perfect every time 😍</Text>
               </Layout.Column>
             </Appear>
           </Layout.Row>
@@ -321,11 +341,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>What is Apollo?</Heading>
-          <Text margin="20px 0" textSize={size.extraSmall}>
-            The Apollo platform is a family of client & server tools designed to
-            help you implement GraphQL in your application.
-          </Text>
-          <Image src={images.whatIs} width="100%" />
+          <Image src={images.platform} width="100%" margin="40px 0" />
         </Slide>
         <Slide>
           <Heading>Server checkpoint 1/5 🚦</Heading>
@@ -336,35 +352,43 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>👩🏼‍💻 Apollo Engine</Heading>
+          <Heading>Glitch.com demo 🎉</Heading>
+          insert pic of Apollo team on Glitch
+        </Slide>
+        <Slide>
+          <Heading>Apollo Engine</Heading>
           <Text margin="20px 0 50px 0" textSize={size.extraSmall}>
-            Apollo Engine is a GraphQL gateway that sits in between Apollo
-            Client and Apollo Server. It has everything you need to run GraphQL
-            in production with confidence, including tracing, persisted queries,
-            caching, alerts, and error tracking.
+            Apollo Engine is a cloud service for managing GraphQL APIs. It has
+            everything you need to run GraphQL in production with confidence,
+            including schema management, tracing, alerts, and error tracking.
           </Text>
-          <Layout.Row align="center">
-            <Image src={images.engine} width="600px" />
-            <List ordered>
-              {[
-                'Visit engine.apollographql.com and login',
-                'Click Add Service in the top right',
-                'Edit the global ID to be fullstack-workshop',
-                'Once you create the service, copy the API key',
-                `Now we're ready to set up our server 🎉`,
-              ].map(item => (
-                <ListItem textSize={size.extraSmall} key={item}>
-                  {item}
-                </ListItem>
-              ))}
-            </List>
-          </Layout.Row>
+          <Image
+            src={images.engine3}
+            width="90%"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
+          <Heading>👩🏼‍💻 Setting up Engine</Heading>
+          <List ordered>
+            {[
+              'Visit engine.apollographql.com and login',
+              'Click Add Service in the top right',
+              'Edit the global ID to be fullstack-workshop',
+              'Create a service, then copy the API key',
+              `Now we're ready to set up our server 🎉`,
+            ].map(item => (
+              <ListItem textSize={size.medium} key={item}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Setting up Apollo Server</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Today, we're setting up Apollo Server for Express, but there are
-            many other extensions for Hapi, Koa, and serverless options like
+            many other integrations for Hapi, Koa, and serverless options like
             Azure Functions and AWS Lambda. Apollo Engine and graphql-tools are
             already built into Apollo Server for you.
           </Text>
@@ -393,8 +417,8 @@ export default class Presentation extends React.Component {
             </ListItem>
             <ListItem textSize={size.small}>
               To set up Apollo Engine, add <Code>ENGINE_API_KEY</Code> as an
-              environment variable and pass <Code>engine: true</Code> to the
-              server config
+              environment variable. Pass any Engine config to{' '}
+              <Code>{`server.listen()`}</Code>
             </ListItem>
             <ListItem textSize={size.small}>
               Your GraphQL server is at <Code>/graphql</Code> and your GraphQL
@@ -594,6 +618,10 @@ export default class Presentation extends React.Component {
           </Layout.Column>
         </Slide>
         <Slide>
+          <Heading>👩🏼‍💻 Resolvers in action</Heading>
+          insert gql playground embed
+        </Slide>
+        <Slide>
           <Heading>💪 Let's build our resolvers!</Heading>
           <List>
             {[
@@ -769,17 +797,13 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>Apollo Engine caching</Heading>
+          <Heading>👩🏼‍💻 Apollo Engine caching</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Engine leverages the Apollo Cache Control spec to cache your GraphQL
             query responses. Engine accepts cache control hints by type via the{' '}
             <Code textSize="0.75em">@cacheControl</Code> directive and
             calculates a maxAge for the response based on the types' hints.
           </Text>
-          <Image width="100%" src={images.engineCaching} />
-        </Slide>
-        <Slide>
-          <Heading>👩🏼‍💻 Add Engine caching</Heading>
           <Layout.Row align="center" style={{ marginTop: '40px' }}>
             <CodePane
               source={server.cacheControl}
@@ -789,6 +813,50 @@ export default class Presentation extends React.Component {
               style={{ maxWidth: 'none' }}
             />
             <Image src={images.cacheHits} width="50%" />
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Layout.Row align="center">
+            <Image src={images.dataSource} width="40%" margin="0 40px 0 0" />
+            <Layout.Column>
+              <Heading style={{ textAlign: 'left' }} margin="0 0 50px 50px">
+                Coming 🔜<br />Data Sources
+              </Heading>
+              <List margin="0 0 0 50px">
+                {[
+                  'Easiest way to wrap a REST endpoint with GraphQL',
+                  'Shared cache for whole and partial query caching',
+                  'Existing cache-control hints are automatically tied to the fields in your schema',
+                ].map(item => (
+                  <ListItem textSize={size.small} key={item}>
+                    {item}
+                  </ListItem>
+                ))}
+              </List>
+            </Layout.Column>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Heading>Apollo Server Data Source</Heading>
+          <Layout.Row style={{ margin: '40px 0' }}>
+            <CodePane
+              lang="js"
+              theme="light"
+              textSize=".8em"
+              source={server.dataSource}
+              style={{ minWidth: '50%' }}
+            />
+            <List margin="0 0 0 40px">
+              {[
+                'Includes data fetching primitives so you only have to supply an endpoint',
+                'Allows developers to focus on business logic',
+                'Coming soon: deduplication, error handling, per source tracing & metrics 🙌',
+              ].map((item, idx) => (
+                <ListItem bold={idx === 3} textSize={size.small} key={item}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
           </Layout.Row>
         </Slide>
         <Slide>
@@ -806,6 +874,10 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>What is Apollo Client?</Heading>
+          <Image margin="40px 0" src={images.reduceComplexity} width="100%" />
+        </Slide>
+        <Slide>
+          <Heading>What is Apollo Client?</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Apollo Client is a data management layer for your application that's
             specifically designed to work great with GraphQL. Out of the box, it
@@ -814,7 +886,7 @@ export default class Presentation extends React.Component {
           <Image
             src={images.dataFlow}
             margin="10px 0 0 -20px"
-            width="90%"
+            width="80%"
             style={{ alignSelf: 'center' }}
           />
         </Slide>
@@ -932,6 +1004,7 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading>What is a render prop?</Heading>
           <CodePane
+            margin="30px 0"
             theme="light"
             source={client.definition}
             lang="jsx"
@@ -1083,9 +1156,14 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>Authentication</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            To send authorization headers to the GraphQL server, set them on the
+            context in Apollo Boost's request function. The request function is
+            called every time an operation executes and the context is shared
+            among all links in your network stack.
+          </Text>
           <CodePane
             style={{ maxWidth: 'none' }}
-            margin="30px 0px"
             source={client.auth}
             theme="light"
             lang="javascript"
@@ -1183,22 +1261,30 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>2017: Separate stores</Heading>
-          <Image
-            src={images.stores}
-            width="90%"
-            margin="30px 0"
-            style={{ alignSelf: 'center', borderRadius: '10px' }}
-          />
+          <Heading>Unified state management</Heading>
+          <Image margin="50px 0 0 0" src={images.unifiedState} width="100%" />
         </Slide>
         <Slide>
-          <Heading>2018: One unified interface</Heading>
-          <Image
-            src={images.gqlInterface}
-            margin="30px 0"
-            width="100%"
-            style={{ borderRadius: '10px' }}
-          />
+          <Heading margin="0 0 40px 0">GraphQL for local state</Heading>
+          <Layout.Row>
+            <CodePane
+              theme="light"
+              source={client.stateMgmt1}
+              lang="graphql"
+              style={{ minWidth: '60%' }}
+            />
+            <List margin="0 0 0 50px">
+              {[
+                'Specify local queries with @client',
+                'Add virtual fields to remote data',
+                'Combine local & remote data in one query',
+              ].map(item => (
+                <ListItem textSize={size.small} key={item}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Layout.Row>
         </Slide>
         <Slide>
           <Heading>Client checkpoint 4/4 🚦</Heading>
@@ -1210,12 +1296,6 @@ export default class Presentation extends React.Component {
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
         </Slide>
-        <Slide bgImage={images.apolloBkgr}>
-          <Heading>Ask us anything!</Heading>
-          <Text textColor="primary">@peggyrayzis</Text>
-          <Text textColor="primary">@jakedawkins</Text>
-          <Text textColor="primary">@imranolas</Text>
-        </Slide>
         <Slide>
           <Heading>What's next 🚀</Heading>
           <List>
@@ -1226,6 +1306,29 @@ export default class Presentation extends React.Component {
               'Write tests by mocking your server',
             ].map(item => <ListItem key={item}>{item}</ListItem>)}
           </List>
+        </Slide>
+        <Slide bgImage={images.apolloBkgr}>
+          <Heading>Learning resources 📚</Heading>
+          <Text textColor="primary">apollographql.com/docs</Text>
+        </Slide>
+        <Slide bgImage={images.apolloBkgr}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}
+          >
+            <Image src={images.astroDaisy} height="500px" />
+            <Layout.Column>
+              <Heading margin="20px 0px 0px 30px" textColor="tertiary">
+                Thanks Hilton! 🙌
+              </Heading>
+              <Text margin="0px 0px 0px 30px" textColor="primary">
+                @peggyrayzis
+              </Text>
+            </Layout.Column>
+          </div>
         </Slide>
       </Deck>
     );

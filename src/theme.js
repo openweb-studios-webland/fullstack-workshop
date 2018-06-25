@@ -43,6 +43,7 @@ const overrides = {
         color: colors.tertiary,
         fontSize: size.large,
         fontWeight: 'bold',
+        letterSpacing: '1.5px',
       },
     },
     link: {
