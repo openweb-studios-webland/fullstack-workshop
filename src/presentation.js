@@ -710,11 +710,14 @@ export default class Presentation extends React.Component {
           <Text margin="40px 0 40px" textSize={size.extraSmall}>
             Gaining visibility into what's happening with your schema is
             essential to optimizing performance. That's where Apollo Engine
-            comes in! Engine's performance and tracing views can help you
-            identify problem areas in your API by providing detailed metrics all
-            the way down to the resolver level.
+            comes in! Engine's schema view can help you identify problem areas
+            in your API by providing metrics for each field.
           </Text>
-          <Image src={images.engineTracing} width="100%" />
+          <Image
+            src={images.engine2}
+            width="90%"
+            style={{ alignSelf: 'center' }}
+          />
         </Slide>
         <Slide>
           <Heading>💪 Experimenting with Engine</Heading>
@@ -722,7 +725,7 @@ export default class Presentation extends React.Component {
             {[
               'Navigate to the fullstack-workshop service in Engine',
               'Run some queries in GraphQL Playground',
-              'View the tracing and performance data for the operations you just ran by clicking on the left hand menu',
+              'View performance data for the operations you just ran by clicking on the left hand menu and navigating to the schema view',
               'What resolvers are slow? What queries can we optimize? Write down your observations.',
             ].map(item => (
               <ListItem key={item} textSize={size.small}>

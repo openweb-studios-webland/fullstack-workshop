@@ -19,6 +19,7 @@ import whatIs from './assets/what-is-apollo.png';
 import platform from './assets/platform.png';
 import glitch from './assets/glitch.png';
 import engine3 from './assets/engine3.png';
+import engine2 from './assets/engine2.png';
 import communication from './assets/communication.png';
 import pizza from './assets/pizza.jpg';
 import paris from './assets/paris.jpg';
@@ -58,4 +59,5 @@ export default {
   dataSource,
   paris,
   glitch,
+  engine2,
 };
