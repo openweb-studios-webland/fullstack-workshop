@@ -8,7 +8,7 @@ If you need to reference the slides, you can view them [here](https://fullstack-
 
 ## Survey
 
-Please take the post-workshop survey!! Your honesty is important to helping me improve for next time: https://goo.gl/forms/KHE9Ipd8u8UFg79G2
+Please take the post-workshop survey!! Your honesty is important to helping me improve for next time: https://goo.gl/forms/jS7RYt9E5vEoTDpD2
 
 ## Setup instructions
 
