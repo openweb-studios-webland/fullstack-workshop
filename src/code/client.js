@@ -84,6 +84,17 @@ export const mutationComponent = `const AddTodo = () => {
   );
 };`;
 
+export const optimisticUI = `addTodo({
+  variables: { type: input.value },
+  optimisticResponse: {
+    addTodo: {
+      id: -1,
+      type: input.value,
+      __typename: 'Todo'
+    }
+  }
+})`;
+
 export const update = `<Mutation
   mutation={ADD_TODO}
   update={(cache, { data: { addTodo } }) => {

@@ -95,10 +95,17 @@ export default class Presentation extends React.Component {
             ))}
           </List>
         </Slide>
-        <Slide bgImage={images.khaled} bgDarken={0.4}>
-          <Heading textColor="primary" style={{ alignSelf: 'center' }}>
-            Be curious & have fun! 🎉
-          </Heading>
+        <Slide bgImage={images.apolloBkgr}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}
+          >
+            <Image src={images.astroDaisy} height="500px" />
+            <Heading>Be curious & have fun!</Heading>
+          </div>
         </Slide>
         <Slide>
           <Heading>What's with the Post-its?! 🚦</Heading>
@@ -209,6 +216,7 @@ export default class Presentation extends React.Component {
         <Slide bgImage={images.apolloBkgr}>
           <Heading>Apollo Server</Heading>
         </Slide>
+        <Slide bgImage={images.paris} />
         <Slide>
           <Image src={images.communication} width="100%" />
         </Slide>
@@ -341,7 +349,12 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>What is Apollo?</Heading>
-          <Image src={images.platform} width="100%" margin="40px 0" />
+          <Image
+            src={images.platform}
+            width="90%"
+            margin="40px 0"
+            style={{ alignSelf: 'center' }}
+          />
         </Slide>
         <Slide>
           <Heading>Server checkpoint 1/5 🚦</Heading>
@@ -353,7 +366,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>Glitch.com demo 🎉</Heading>
-          insert pic of Apollo team on Glitch
+          <Image src={images.glitch} width="100%" />
         </Slide>
         <Slide>
           <Heading>Apollo Engine</Heading>
@@ -398,7 +411,7 @@ export default class Presentation extends React.Component {
           <List ordered>
             <ListItem textSize={size.small}>
               <Code>
-                npm install apollo-server apollo-engine graphql --save
+                npm install apollo-server@rc apollo-engine graphql --save
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
@@ -619,7 +632,16 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Resolvers in action</Heading>
-          insert gql playground embed
+          <div
+            className="glitch-embed-wrap"
+            style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
+          >
+            <iframe
+              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
+              alt="fullstack-workshop-server on glitch"
+              style={{ height: '100%', width: '100%', border: 0 }}
+            />
+          </div>
         </Slide>
         <Slide>
           <Heading>💪 Let's build our resolvers!</Heading>
@@ -946,7 +968,7 @@ export default class Presentation extends React.Component {
             </ListItem>
             <ListItem textSize={size.small}>
               <Code>
-                {`const client = new ApolloClient({ uri: 'https://fullstack-workshop.glitch.me/graphql' });`}
+                {`const client = new ApolloClient({ uri: 'https://fullstack-workshop-server.glitch.me/graphql' });`}
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
@@ -1201,8 +1223,7 @@ export default class Presentation extends React.Component {
             textColor="tertiary"
             margin="20px 0 20px 0"
           >
-            2. Trigger the mutation with the first argument to the render prop
-            function
+            2. Call the mutation with the first arg to the render prop function
           </Text>
           <CodePane
             source={client.mutationComponent}
@@ -1213,7 +1234,7 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading>💪 Mutation components</Heading>
+          <Heading>💪 Mutation components (pt. 1)</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Now it's your turn! Try building some Mutation components to update
             data in our GraphQL API. If you get stuck, you can view docs on
@@ -1226,6 +1247,55 @@ export default class Presentation extends React.Component {
             {[
               'Navigate to components/Login and read the Part 1 instructions',
               `Check the Apollo docs on the props configuration`,
+              `Use Apollo DevTools if you get stuck`,
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>Optimistic mutations</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Often, we know what the result of a mutation will be before it
+            returns from the server. When we already know how our UI is supposed
+            to respond after a mutation, we can create an optimistic mutation.
+            Just pass your desired optimisticResponse to the mutate function and
+            Apollo Client will take care of the rest.
+          </Text>
+          <Layout.Row>
+            <CodePane
+              source={client.optimisticUI}
+              lang="jsx"
+              theme="light"
+              style={{ maxWidth: 'none', minWidth: '60%' }}
+            />
+            <List>
+              {[
+                'Optimistic UI will rollback if there is an error',
+                'Add __typename to prevent warnings from the Apollo cache',
+              ].map(item => (
+                <ListItem textSize={size.small} key={item}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Heading>💪 Mutation components (pt. 2)</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Let's build a Mutation component with optimistic UI. If you get
+            stuck, you can view docs on props and the render prop function{' '}
+            <Link href="https://www.apollographql.com/docs/react/essentials/mutations.html#api">
+              here
+            </Link>.
+          </Text>
+          <List>
+            {[
+              'Navigate to components/MovieTile and read the Part 2 instructions',
+              `Try to add an optimistic update to the toggleLike mutation`,
               `Use Apollo DevTools if you get stuck`,
             ].map(item => (
               <ListItem key={item} textSize={size.small}>

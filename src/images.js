@@ -17,9 +17,11 @@ import schemaDev from './assets/schema-dev.png';
 import dataFlow from './assets/data-flow.png';
 import whatIs from './assets/what-is-apollo.png';
 import platform from './assets/platform.png';
+import glitch from './assets/glitch.png';
 import engine3 from './assets/engine3.png';
 import communication from './assets/communication.png';
 import pizza from './assets/pizza.jpg';
+import paris from './assets/paris.jpg';
 import uglyPizza from './assets/ugly-pizza.jpg';
 import astroDaisy from './assets/astrodaisy-blank.png';
 import unifiedState from './assets/unified-state.png';
@@ -54,4 +56,6 @@ export default {
   unifiedState,
   reduceComplexity,
   dataSource,
+  paris,
+  glitch,
 };
