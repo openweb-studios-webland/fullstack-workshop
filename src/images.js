@@ -4,7 +4,6 @@ import cacheHits from './assets/cache-hits.png';
 import apolloLogo from './assets/apollo.svg';
 import khaled from './assets/khaled.png';
 import schema from './assets/schema.png';
-import dataloader from './assets/dataloader.png';
 import resolvers from './assets/resolvers.png';
 import query from './assets/query.png';
 import stores from './assets/stores.png';
@@ -16,18 +15,22 @@ import gqlOverRest from './assets/gql-over-rest.png';
 import schemaDev from './assets/schema-dev.png';
 import dataFlow from './assets/data-flow.png';
 import whatIs from './assets/what-is-apollo.png';
-import platform from './assets/platform.png';
+import platform from './assets/platform-diagram.png';
 import glitch from './assets/glitch.png';
 import engine3 from './assets/engine3.png';
 import engine2 from './assets/engine2.png';
 import communication from './assets/communication.png';
 import pizza from './assets/pizza.jpg';
-import paris from './assets/paris.jpg';
 import uglyPizza from './assets/ugly-pizza.jpg';
 import astroDaisy from './assets/astrodaisy-blank.png';
 import unifiedState from './assets/unified-state.png';
 import reduceComplexity from './assets/reduce-complexity.png';
 import dataSource from './assets/data-source.png';
+import playground from './assets/annotated-playground.png';
+import validation from './assets/schema-validation.png';
+import security from './assets/security.png';
+import singleSource from './assets/single-source.png';
+import unifiedInterface from './assets/unified-interface.png';
 
 export default {
   apolloBkgr,
@@ -36,7 +39,6 @@ export default {
   peggy,
   schema,
   query,
-  dataloader,
   gqlOverRest,
   engineTracing,
   resolvers,
@@ -57,7 +59,11 @@ export default {
   unifiedState,
   reduceComplexity,
   dataSource,
-  paris,
   glitch,
   engine2,
+  playground,
+  validation,
+  security,
+  singleSource,
+  unifiedInterface,
 };

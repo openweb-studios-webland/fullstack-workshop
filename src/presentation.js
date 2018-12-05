@@ -16,7 +16,6 @@ import {
   CodePane,
   Code,
   Link,
-  Notes,
 } from 'spectacle';
 
 // Spectacle Theme & Layout components
@@ -52,6 +51,20 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         <Slide bgImage={images.apolloBkgr}>
+          <Text bold textColor="tertiary" textSize={size.large}>
+            Welcome SurveyMonkey! 🐵
+          </Text>
+          <Text bold textColor="primary" margin="30px 0 0 0" textSize="2.1em">
+            Please navigate to:
+          </Text>
+          <Text bold textColor="tertiary" margin="10px 0 0 0" textSize="2.1em">
+            github.com/apollographql/fullstack-workshop
+          </Text>
+          <Text bold textColor="primary" margin="10px 0 0 0" textSize="2.1em">
+            and follow the instructions!
+          </Text>
+        </Slide>
+        <Slide bgImage={images.apolloBkgr}>
           <Image src={images.apolloLogo} margin="0 0 0 -55px" width="800px" />
           <Text bold textColor="tertiary">
             Fullstack GraphQL Workshop
@@ -76,7 +89,7 @@ export default class Presentation extends React.Component {
                 @peggyrayzis
               </Text>
               <Text margin="20px 0px 0px 30px" textColor="primary">
-                Open Source Engineer
+                Engineering Manager
               </Text>
             </Layout.Column>
           </div>
@@ -122,7 +135,7 @@ export default class Presentation extends React.Component {
         <Slide bgImage={images.apolloBkgr}>
           <Heading>Goal:</Heading>
           <Text textColor="primary">
-            Build a fullstack React app with GraphQL powered by Apollo tools 🚀
+            Build a fullstack GraphQL app with the Apollo platform 🚀
           </Text>
         </Slide>
         <Slide>
@@ -133,9 +146,9 @@ export default class Presentation extends React.Component {
                 header: 'Apollo Server',
                 items: [
                   'Schema building',
-                  'Resolvers',
+                  'Data sources',
+                  `Resolvers`,
                   `Authentication`,
-                  `Caching`,
                 ],
               },
               {
@@ -186,7 +199,7 @@ export default class Presentation extends React.Component {
           <List>
             {[
               'Apollo Engine account',
-              'Glitch.com account',
+              'Glitch account',
               'CodeSandbox account',
               'Apollo DevTools for Chrome',
             ].map(item => (
@@ -203,20 +216,20 @@ export default class Presentation extends React.Component {
             2. Navigate to the{' '}
             <Link href="https://github.com/apollographql/fullstack-workshop">
               workshop README
-            </Link>. If you ever get stuck, check the FAQ for answers. 😊
+            </Link>
+            . If you ever get stuck, check the FAQ for answers. 😊
           </Text>
           <Text textSize={size.small}>
             3. All development will be done in the browser via{' '}
-            <Link href="https://glitch.com">Glitch</Link> and{' '}
-            <Link href="https://codesandbox.io">CodeSandbox</Link>. This means
-            more time learning cool stuff and less time messing with build
-            tools! 🎉
+            <Link href="https://codesandbox.io">CodeSandbox</Link> &{' '}
+            <Link href="https://glitch.com">Glitch</Link>. This means more time
+            learning cool stuff and less time messing with local environments!
+            🎉
           </Text>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
           <Heading>Apollo Server</Heading>
         </Slide>
-        <Slide bgImage={images.paris} />
         <Slide>
           <Image src={images.communication} width="100%" />
         </Slide>
@@ -232,7 +245,7 @@ export default class Presentation extends React.Component {
               <Layout.Column>
                 <Image src={images.schema} margin="0px" width="550px" />
                 <Text textSize={size.small}>
-                  1. Define a schema for your data on the server
+                  Schema: Describe the data you have
                 </Text>
               </Layout.Column>
             </Appear>
@@ -240,11 +253,14 @@ export default class Presentation extends React.Component {
               <Layout.Column>
                 <Image src={images.query} margin="0px" width="550px" />
                 <Text textSize={size.small}>
-                  2. Write a query on the client to get the data you need
+                  Query: Describe the data you need
                 </Text>
               </Layout.Column>
             </Appear>
           </Layout.Row>
+        </Slide>
+        <Slide>
+          <Image src={images.playground} width="100%" />
         </Slide>
         <Slide>
           <Heading margin="0 0 30px 0">REST vs. GraphQL 🍕</Heading>
@@ -336,6 +352,7 @@ export default class Presentation extends React.Component {
               <List>
                 {[
                   'Avoid roundtrips from the client',
+                  'Smaller payloads',
                   'Reuse filtering and sorting logic across platforms',
                   'Ship features faster without writing new endpoints',
                 ].map(item => (
@@ -348,71 +365,34 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>What is Apollo?</Heading>
+          <Heading>What is the Apollo platform?</Heading>
           <Image
             src={images.platform}
             width="90%"
-            margin="40px 0"
             style={{ alignSelf: 'center' }}
           />
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 1/5 🚦</Heading>
+          <Heading>Server checkpoint 1/6 🚦</Heading>
           <List>
-            {['What is GraphQL?', 'GraphQL vs. REST', 'What is Apollo?'].map(
-              item => <ListItem key={item}>{item}</ListItem>,
-            )}
-          </List>
-        </Slide>
-        <Slide>
-          <Heading>Glitch.com demo 🎉</Heading>
-          <Image src={images.glitch} width="100%" />
-        </Slide>
-        <Slide>
-          <Heading>Apollo Engine</Heading>
-          <Text margin="20px 0 50px 0" textSize={size.extraSmall}>
-            Apollo Engine is a cloud service for managing GraphQL APIs. It has
-            everything you need to run GraphQL in production with confidence,
-            including schema management, tracing, alerts, and error tracking.
-          </Text>
-          <Image
-            src={images.engine3}
-            width="90%"
-            style={{ alignSelf: 'center' }}
-          />
-        </Slide>
-        <Slide>
-          <Heading>👩🏼‍💻 Setting up Engine</Heading>
-          <List ordered>
             {[
-              'Visit engine.apollographql.com and login',
-              'Click Add Service in the top right',
-              'Edit the global ID to be fullstack-workshop',
-              'Create a service, then copy the API key',
-              `Now we're ready to set up our server 🎉`,
+              'What is GraphQL?',
+              'GraphQL vs. REST',
+              'What is the Apollo platform?',
             ].map(item => (
-              <ListItem textSize={size.medium} key={item}>
-                {item}
-              </ListItem>
+              <ListItem key={item}>{item}</ListItem>
             ))}
           </List>
         </Slide>
         <Slide>
-          <Heading>👩🏼‍💻 Setting up Apollo Server</Heading>
-          <Text margin="20px 0" textSize={size.extraSmall}>
-            Today, we're setting up Apollo Server for Express, but there are
-            many other integrations for Hapi, Koa, and serverless options like
-            Azure Functions and AWS Lambda. Apollo Engine and graphql-tools are
-            already built into Apollo Server for you.
-          </Text>
+          <Heading>Glitch demo 🎉</Heading>
+          <Image src={images.glitch} width="100%" />
         </Slide>
         <Slide>
-          <Heading>Recap: Apollo Server</Heading>
+          <Heading>👩🏼‍💻 Setting up Apollo Server</Heading>
           <List ordered>
             <ListItem textSize={size.small}>
-              <Code>
-                npm install apollo-server@rc apollo-engine graphql --save
-              </Code>
+              <Code>npm install apollo-server graphql --save</Code>
             </ListItem>
             <ListItem textSize={size.small}>
               <Code>
@@ -425,17 +405,11 @@ export default class Presentation extends React.Component {
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              <Code
-              >{`server.listen().then(({ url }) => console.log(url))`}</Code>
+              <Code>{`server.listen().then(({ url }) => console.log(url))`}</Code>
             </ListItem>
             <ListItem textSize={size.small}>
-              To set up Apollo Engine, add <Code>ENGINE_API_KEY</Code> as an
-              environment variable. Pass any Engine config to{' '}
-              <Code>{`server.listen()`}</Code>
-            </ListItem>
-            <ListItem textSize={size.small}>
-              Your GraphQL server is at <Code>/graphql</Code> and your GraphQL
-              Playground IDE is set up at <Code>/</Code> 🎉
+              Your GraphQL server and GraphQL Playground IDE are set up at{' '}
+              <Code>/</Code> 🎉
             </ListItem>
           </List>
         </Slide>
@@ -453,13 +427,14 @@ export default class Presentation extends React.Component {
           </div>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 2/5 🚦</Heading>
+          <Heading>Server checkpoint 2/6 🚦</Heading>
           <List>
             {[
-              'What is Apollo Engine?',
               'Setting up Apollo Server',
               'Exploring in GraphQL Playground',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
@@ -505,14 +480,34 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
+          <Heading>👩🏼‍💻 Queries and mutations</Heading>
+          <Text margin="20px 0 20px" textSize={size.extraSmall}>
+            The Query and Mutation types are two special types in GraphQL.
+            Queries are how you fetch data, and mutations are how you update
+            data. They're the root of your graph API.
+          </Text>
+          <List ordered>
+            {[
+              'Write a movie query to fetch a single movie by id',
+              'Write a toggleLike mutation to toggle if a movie is liked',
+              'Write a likes query that fetches all the liked movies',
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
           <Heading>👩🏼‍💻 Writing a schema</Heading>
           <Text margin="20px 0 20px" textSize={size.extraSmall}>
-            The easiest way to write a schema is with Schema Definition Language
-            (SDL). Today, we're going to cover object and scalar types, but you
-            can view a full list of types in the{' '}
+            We recommend writing a schema in Schema Definition Language (SDL).
+            Today, we're going to cover object and scalar types, but you can
+            view a full list of types in the{' '}
             <Link href="http://graphql.org/learn/schema/">
               graphql.org docs
-            </Link>.
+            </Link>
+            .
           </Text>
           <Layout.Row align="flex-start">
             <CodePane
@@ -543,7 +538,8 @@ export default class Presentation extends React.Component {
             the{' '}
             <Link href="http://graphql.org/learn/schema/">
               graphql.org docs
-            </Link>.
+            </Link>
+            .
           </Text>
           <List ordered>
             {[
@@ -560,18 +556,47 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>💪 Queries and mutations</Heading>
-          <Text margin="20px 0 20px" textSize={size.extraSmall}>
-            The Query and Mutation types are two special types in GraphQL.
-            Queries are how you fetch data, and mutations are how you update
-            data.
-          </Text>
-          <List ordered>
+          <Heading>Server checkpoint 3/6 🚦</Heading>
+          <List>
             {[
-              'Write a movie query to fetch a single movie by id',
-              'Write a toggleLike mutation to toggle if a movie is liked',
-              'Write a likes query that fetches all the liked movies',
-              'Bonus: Explore your schema in GraphQL Playground when you finish',
+              'Schema driven development',
+              'Schema Definition Language (SDL)',
+              'Queries and mutations',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>Apollo Data Sources</Heading>
+          <Layout.Row style={{ marginTop: '60px', alignItems: 'center' }}>
+            <Image src={images.dataSource} height="650px" />
+            <List margin="0px 0px 0px 100px">
+              {[
+                'Apollo Data Sources encapsulate data fetching for a particular service',
+                'The REST data source automatically sets up a resource cache for you',
+                'Data sources allow you to safely refactor data fetching logic while keeping resolvers thin',
+              ].map(item => (
+                <ListItem key={item} textSize={size.small}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Heading>💪 Build a REST data source</Heading>
+          <Text margin="20px 0 20px" textSize={size.extraSmall}>
+            Now it's your turn to fill in some of the data fetching methods for
+            our data source. Navigate to <Code>src/data-sources/movie.js</Code>{' '}
+            to get started. Remember to check out the schema if you're unsure of
+            what a data fetching method should return.
+          </Text>
+          <List ordered margin="0px">
+            {[
+              'Write a getMovieById method for the data source',
+              'Write a getCastByMovie method for the data source',
+              `If you\'re done, check out src/data-sources/likes.js for an example of a data source that wraps a database`,
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
                 {item}
@@ -580,17 +605,57 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 3/5 🚦</Heading>
+          <Heading>👩🏼‍💻 Add data sources to Apollo</Heading>
+          <Text margin="20px 0 20px" textSize={size.extraSmall}>
+            Add our data sources to Apollo Server by specifying a function for
+            the <Code>dataSources</Code> property on the constructor.
+            Instantiate your data sources in the object returned from the
+            function. This will ensure your data sources are properly placed on
+            the GraphQL context for every request.
+          </Text>
+          <CodePane
+            source={server.dataSource}
+            lang="js"
+            theme="light"
+            style={{ maxWidth: 'none' }}
+          />
+        </Slide>
+        <Slide>
+          <Heading>👩🏼‍💻 Authentication</Heading>
+          <Text margin="40px 0 20px 0" textSize={size.extraSmall}>
+            Each GraphQL request has a context object that's shared among its
+            resolvers. The context is where we can store auth tokens that we can
+            access in our resolvers to determine if the user can access private
+            information.
+          </Text>
+          <Appear>
+            <List ordered>
+              {[
+                'The context property on ApolloServer is a function with access to the request',
+                'Check the headers on the request and pass the user to the context',
+                'In the resolver function, use the context argument to authorize the user',
+              ].map(item => (
+                <ListItem key={item} textSize={size.small}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Heading>Server checkpoint 4/6 🚦</Heading>
           <List>
             {[
-              'Schema driven development',
-              'Schema Definition Language (SDL)',
-              'Queries and mutations',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+              'Apollo Server data sources',
+              'Authentication',
+              'GraphQL context',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
-          <Heading>Resolver map</Heading>
+          <Heading>What is a resolver?</Heading>
           <Layout.Row style={{ marginTop: '20px' }}>
             <Image src={images.resolvers} height="650px" />
             <List margin="0px">
@@ -631,28 +696,23 @@ export default class Presentation extends React.Component {
           </Layout.Column>
         </Slide>
         <Slide>
-          <Heading>👩🏼‍💻 Resolvers in action</Heading>
-          <div
-            className="glitch-embed-wrap"
-            style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
-          >
-            <iframe
-              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
-              alt="fullstack-workshop-server on glitch"
-              style={{ height: '100%', width: '100%', border: 0 }}
-            />
-          </div>
-        </Slide>
-        <Slide>
           <Heading>💪 Let's build our resolvers!</Heading>
+          <CodePane
+            source={server.resolver}
+            theme="light"
+            textSize="1.2em"
+            style={{ maxWidth: 'none' }}
+            margin="30px 0"
+            lang="javascript"
+          />
           <List>
             {[
               'Navigate to the resolvers folder and implement the resolvers',
               'Start with Query and Mutation, then move onto Movie',
-              'Look at the models folder for your data fetching functions',
-              'Test out that your resolvers work by running queries in GraphQL Playground',
+              'Look at your data sources for your data fetching functions',
+              'Bonus: Test that your resolvers work by running queries in GraphQL Playground',
             ].map(item => (
-              <ListItem key={item} margin="30px 0" textSize={size.small}>
+              <ListItem key={item} textSize={size.small}>
                 {item}
               </ListItem>
             ))}
@@ -660,23 +720,15 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Running queries</Heading>
-          <div
-            className="glitch-embed-wrap"
-            style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
-          >
-            <iframe
-              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
-              alt="fullstack-workshop-server on glitch"
-              style={{ height: '100%', width: '100%', border: 0 }}
-            />
-          </div>
+          <Image src={images.playground} width="95%" margin="20px" />
         </Slide>
         <Slide>
           <Heading>Project structure</Heading>
           <Text margin="20px 0 20px" textSize={size.extraSmall}>
-            There are many ways to organize your GraphQL project structure. We
-            recommend starting small by putting your schema in one file and
-            breaking it out over time.
+            There are many ways to organize your graph API's project structure.
+            We recommend starting small by putting your schema in one file and
+            breaking it out over time. For teams who want to compose multiple
+            schemas into one, we recommend the Apollo Gateway.
           </Text>
           <Layout.Row align="center">
             <Image src={images.spectrum} width="400px" />
@@ -685,8 +737,8 @@ export default class Presentation extends React.Component {
                 Group by domain or by file type
               </ListItem>
               <ListItem textSize={size.extraSmall}>
-                Separate your data fetching logic into models and access them on
-                the context
+                Separate your data fetching logic into data sources and access
+                them on the context
               </ListItem>
               <ListItem textSize={size.extraSmall}>
                 Check out{' '}
@@ -706,178 +758,40 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>Analyzing performance 🚀</Heading>
-          <Text margin="40px 0 40px" textSize={size.extraSmall}>
-            Gaining visibility into what's happening with your schema is
-            essential to optimizing performance. That's where Apollo Engine
-            comes in! Engine's schema view can help you identify problem areas
-            in your API by providing metrics for each field.
-          </Text>
-          <Image
-            src={images.engine2}
-            width="90%"
-            style={{ alignSelf: 'center' }}
-          />
-        </Slide>
-        <Slide>
-          <Heading>💪 Experimenting with Engine</Heading>
-          <List ordered>
+          <Heading>Server checkpoint 5/6 🚦</Heading>
+          <List>
             {[
-              'Navigate to the fullstack-workshop service in Engine',
-              'Run some queries in GraphQL Playground',
-              'View performance data for the operations you just ran by clicking on the left hand menu and navigating to the schema view',
-              'What resolvers are slow? What queries can we optimize? Write down your observations.',
+              'Resolver functions',
+              'Running queries & mutations',
+              'Project structure',
             ].map(item => (
-              <ListItem key={item} textSize={size.small}>
-                {item}
-              </ListItem>
+              <ListItem key={item}>{item}</ListItem>
             ))}
           </List>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 4/5 🚦</Heading>
-          <List>
-            {[
-              'Building resolver functions',
-              'Project structure',
-              'Performance analysis with Engine',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
-          </List>
-        </Slide>
-        <Slide>
-          <Heading>👩🏼‍💻 Authentication</Heading>
-          <Text margin="40px 0 20px 0" textSize={size.extraSmall}>
-            Each GraphQL request has a context object that's shared among its
-            resolvers. The context is where we can store auth tokens that we can
-            access in our resolvers to determine if the user can access private
-            information.
-          </Text>
-          <Appear>
-            <List ordered>
-              {[
-                'The context property on ApolloServer is a function with access to the request',
-                'Check the headers on the request and pass the user to the context',
-                'In the resolver function, use the context argument to authorize the user',
-              ].map(item => (
-                <ListItem key={item} textSize={size.small}>
-                  {item}
-                </ListItem>
-              ))}
-            </List>
-          </Appear>
-        </Slide>
-        <Slide>
-          <Heading>GraphQL caching</Heading>
-          <Text margin="40px 0 40px 0" textSize={size.extraSmall}>
-            Caching is important for reducing the load on your servers and
-            decreasing page render times. Existing caching solutions for REST
-            don't work well for GraphQL APIs. This is because GraphQL requests
-            are sent to a single endpoint and responses are unpredictable.
+          <Heading>Running in production</Heading>
+          <Text margin="20px 0 50px 0" textSize={size.extraSmall}>
+            The Apollo platform helps you run GraphQL in production with
+            confidence. Our cloud services include a schema registry for
+            validating changes, a client registry for client awareness, and a
+            trace warehouse for capturing detailed information about your graph
+            API.
           </Text>
           <Layout.Row>
-            <Layout.Column>
-              <Text textColor="tertiary">Resolver caching</Text>
-              <Text textSize={size.small}>
-                Reduce requests to your backends via batching
-              </Text>
-            </Layout.Column>
-            <Layout.Column>
-              <Text textColor="tertiary">Response caching</Text>
-              <Text textSize={size.small}>
-                Cache the entire response based on max age
-              </Text>
-            </Layout.Column>
-          </Layout.Row>
-        </Slide>
-        <Slide>
-          <Heading>DataLoader</Heading>
-          <Text textSize={size.extraSmall} margin="20px 0">
-            For cases where a single query would request the same resource
-            multiple times, DataLoader can help you collapse them into one
-            request by identifying the duplicates during execution.
-          </Text>
-          <Image src={images.dataloader} width="100%" />
-          <CodePane
-            source={server.loader}
-            theme="light"
-            style={{ maxWidth: 'none' }}
-          />
-        </Slide>
-        <Slide>
-          <Heading>💪 Refactoring to loaders</Heading>
-          <Text textSize={size.extraSmall} margin="20px 0">
-            I've already created your loader in loaders.js. Now, we need to use
-            the loader to fetch data within our models.
-          </Text>
-          <List ordered>
-            {[
-              'Check out models/cast for an example',
-              'In models/movie, refactor getMovieById and getMovies to use our loader',
-              'Bonus: View tracing data in Engine to see if DataLoader improved response times',
-            ].map(item => (
-              <ListItem key={item} textSize={size.small}>
-                {item}
-              </ListItem>
-            ))}
-          </List>
-        </Slide>
-        <Slide>
-          <Heading>👩🏼‍💻 Apollo Engine caching</Heading>
-          <Text margin="20px 0" textSize={size.extraSmall}>
-            Engine leverages the Apollo Cache Control spec to cache your GraphQL
-            query responses. Engine accepts cache control hints by type via the{' '}
-            <Code textSize="0.75em">@cacheControl</Code> directive and
-            calculates a maxAge for the response based on the types' hints.
-          </Text>
-          <Layout.Row align="center" style={{ marginTop: '40px' }}>
-            <CodePane
-              source={server.cacheControl}
-              lang="graphql"
-              theme="light"
-              textSize="0.8em"
-              style={{ maxWidth: 'none' }}
+            <Image
+              src={images.platform}
+              width="55%"
+              margin="0 50px 0 0"
+              style={{ alignSelf: 'center' }}
             />
-            <Image src={images.cacheHits} width="50%" />
-          </Layout.Row>
-        </Slide>
-        <Slide>
-          <Layout.Row align="center">
-            <Image src={images.dataSource} width="40%" margin="0 40px 0 0" />
-            <Layout.Column>
-              <Heading style={{ textAlign: 'left' }} margin="0 0 50px 50px">
-                Coming 🔜<br />Data Sources
-              </Heading>
-              <List margin="0 0 0 50px">
-                {[
-                  'Easiest way to wrap a REST endpoint with GraphQL',
-                  'Shared cache for whole and partial query caching',
-                  'Existing cache-control hints are automatically tied to the fields in your schema',
-                ].map(item => (
-                  <ListItem textSize={size.small} key={item}>
-                    {item}
-                  </ListItem>
-                ))}
-              </List>
-            </Layout.Column>
-          </Layout.Row>
-        </Slide>
-        <Slide>
-          <Heading>Apollo Server Data Source</Heading>
-          <Layout.Row style={{ margin: '40px 0' }}>
-            <CodePane
-              lang="js"
-              theme="light"
-              textSize=".8em"
-              source={server.dataSource}
-              style={{ minWidth: '50%' }}
-            />
-            <List margin="0 0 0 40px">
+            <List>
               {[
-                'Includes data fetching primitives so you only have to supply an endpoint',
-                'Allows developers to focus on business logic',
-                'Coming soon: deduplication, error handling, per source tracing & metrics 🙌',
-              ].map((item, idx) => (
-                <ListItem bold={idx === 3} textSize={size.small} key={item}>
+                'What clients are accessing my API?',
+                'How do I safely make changes to my schema?',
+                'When was a field deprecated?',
+              ].map(item => (
+                <ListItem textSize={size.small} key={item}>
                   {item}
                 </ListItem>
               ))}
@@ -885,13 +799,62 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 5/5 🚦</Heading>
+          <Heading>👩🏼‍💻 Schema registry</Heading>
+          <List ordered>
+            {[
+              'Visit engine.apollographql.com and login',
+              'Click Add Service in the top right',
+              'Edit the global ID to be workshop-server',
+              'Create a service, then copy the API key',
+              'Run npx apollo service:push key="YOUR_KEY"',
+            ].map(item => (
+              <ListItem textSize={size.medium} key={item}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Layout.Row>
+            <Image src={images.validation} width="40%" />
+            <List margin="0px 0px 0px 50px" style={{ alignSelf: 'center' }}>
+              {[
+                'Schema change validation prevents breaking changes',
+                'Know if changes break registered clients',
+              ].map(item => (
+                <ListItem textSize={size.medium} key={item}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Heading>Securing your graph API</Heading>
           <List>
             {[
-              'Using the context for authentication',
-              'Resolver caching with DataLoader',
-              'Response caching with Engine',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+              'Register all operations with the Apollo CLI',
+              'Permit only registered operations in production',
+              'Eliminate the risk of arbitrary operations',
+            ].map(item => (
+              <ListItem textSize={size.small} key={item}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+          <Image src={images.security} width="100%" />
+        </Slide>
+
+        <Slide>
+          <Heading>Server checkpoint 6/6 🚦</Heading>
+          <List>
+            {[
+              'Pushing your schema to Apollo Engine',
+              'Validating schema changes',
+              'Securing your graph API',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
@@ -1023,7 +986,9 @@ export default class Presentation extends React.Component {
               'What is Apollo Client?',
               'Setting up Apollo Boost',
               'What is React Apollo?',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
@@ -1046,8 +1011,9 @@ export default class Presentation extends React.Component {
               textSize={size.medium}
               style={{ textAlign: 'left', flex: 1 }}
             >
-              A render prop is a function that tells your component<br />what to
-              render.
+              A render prop is a function that tells your component
+              <br />
+              what to render.
             </Text>
             <CodePane
               theme="light"
@@ -1140,7 +1106,8 @@ export default class Presentation extends React.Component {
             and the render prop function{' '}
             <Link href="https://www.apollographql.com/docs/react/essentials/queries.html#api">
               here
-            </Link>.
+            </Link>
+            .
           </Text>
           <List ordered>
             {[
@@ -1176,7 +1143,9 @@ export default class Presentation extends React.Component {
               'Fetching data with Query components',
               'Pagination with fetchMore',
               'Apollo DevTools debugging strategies',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
@@ -1244,7 +1213,8 @@ export default class Presentation extends React.Component {
             props and the render prop function{' '}
             <Link href="https://www.apollographql.com/docs/react/essentials/mutations.html#api">
               here
-            </Link>.
+            </Link>
+            .
           </Text>
           <List>
             {[
@@ -1293,7 +1263,8 @@ export default class Presentation extends React.Component {
             stuck, you can view docs on props and the render prop function{' '}
             <Link href="https://www.apollographql.com/docs/react/essentials/mutations.html#api">
               here
-            </Link>.
+            </Link>
+            .
           </Text>
           <List>
             {[
@@ -1330,34 +1301,25 @@ export default class Presentation extends React.Component {
               'Authenticating a request',
               'Building Mutation components',
               'Updating data in the Apollo cache',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
-          <Heading>Unified state management</Heading>
-          <Image margin="50px 0 0 0" src={images.unifiedState} width="100%" />
+          <Image
+            margin="50px 0 0 0"
+            src={images.singleSource}
+            width="80%"
+            style={{ alignSelf: 'center' }}
+          />
         </Slide>
         <Slide>
-          <Heading margin="0 0 40px 0">GraphQL for local state</Heading>
-          <Layout.Row>
-            <CodePane
-              theme="light"
-              source={client.stateMgmt1}
-              lang="graphql"
-              style={{ minWidth: '60%' }}
-            />
-            <List margin="0 0 0 50px">
-              {[
-                'Specify local queries with @client',
-                'Add virtual fields to remote data',
-                'Combine local & remote data in one query',
-              ].map(item => (
-                <ListItem textSize={size.small} key={item}>
-                  {item}
-                </ListItem>
-              ))}
-            </List>
-          </Layout.Row>
+          <Image
+            src={images.unifiedInterface}
+            width="80%"
+            style={{ alignSelf: 'center' }}
+          />
         </Slide>
         <Slide>
           <Heading>Client checkpoint 4/4 🚦</Heading>
@@ -1366,7 +1328,9 @@ export default class Presentation extends React.Component {
               'What is apollo-link-state?',
               'Writing initial state to the cache',
               'Direct writes vs. resolvers',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
         </Slide>
         <Slide>
@@ -1377,8 +1341,16 @@ export default class Presentation extends React.Component {
               'Convert setState calls to link-state',
               'Build out more of your schema',
               'Write tests by mocking your server',
-            ].map(item => <ListItem key={item}>{item}</ListItem>)}
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
           </List>
+        </Slide>
+        <Slide bgImage={images.apolloBkgr}>
+          <Heading>Survey time! ⏰</Heading>
+          <Text textColor="primary">
+            Check the workshop README for the link.
+          </Text>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
           <Heading>Learning resources 📚</Heading>
@@ -1395,7 +1367,7 @@ export default class Presentation extends React.Component {
             <Image src={images.astroDaisy} height="500px" />
             <Layout.Column>
               <Heading margin="20px 0px 0px 30px" textColor="tertiary">
-                Thanks Hilton! 🙌
+                Thank you! 🙌
               </Heading>
               <Text margin="0px 0px 0px 30px" textColor="primary">
                 @peggyrayzis

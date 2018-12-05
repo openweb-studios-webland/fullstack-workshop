@@ -50,19 +50,14 @@ export const cacheControl = `type Cast @cacheControl(maxAge: 600) {
   character: String
 }`;
 
-export const dataSource = `class MovieAPI extends RESTDataSource {
-  baseURL = 'https://movieapi.com/';
+export const dataSource = `const MovieDataSource = require('./data-sources/movie');
+const LikesDataSource = require('./data-sources/likes');
 
-  async getMostViewedMovies() {
-    const body = await this.get('movies', {
-      per_page: 10,
-      order_by: 'most_viewed',
-    });
-    return body.results;
-  }
-  willSendRequest(request: Request) {
-    request.headers.set('Authorization',
-      this.context.token
-    );
-  }
-}`;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    moviesAPI: new MovieDataSource(),
+    likesAPI: new LikesDataSource(),
+  })
+});`;
