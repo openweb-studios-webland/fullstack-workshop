@@ -199,7 +199,6 @@ export default class Presentation extends React.Component {
           <List>
             {[
               'Apollo account',
-              'Glitch account',
               'CodeSandbox account',
               'Apollo DevTools for Chrome',
             ].map(item => (
@@ -221,10 +220,9 @@ export default class Presentation extends React.Component {
           </Text>
           <Text textSize={size.small}>
             3. All development will be done in the browser via{' '}
-            <Link href="https://codesandbox.io">CodeSandbox</Link> &{' '}
-            <Link href="https://glitch.com">Glitch</Link>. This means more time
-            learning cool stuff and less time messing with local environments!
-            🎉
+            <Link href="https://codesandbox.io">CodeSandbox</Link>. This means
+            more time learning cool stuff and less time messing with local
+            environments! 🎉
           </Text>
         </Slide>
         <Slide bgImage={images.apolloBkgr}>
@@ -385,8 +383,20 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>Glitch demo 🎉</Heading>
-          <Image src={images.glitch} width="100%" />
+          <Heading>CodeSandbox demo 🎉</Heading>
+          <iframe
+            src="https://codesandbox.io/embed/github/apollographql/fullstack-workshop-server/tree/master/?fontsize=14"
+            title="graphql-server-workshop"
+            style={{
+              width: '100%',
+              height: '500px',
+              border: '0',
+              borderRadius: '4px',
+              overflow: 'hidden',
+              marginTop: '50px',
+            }}
+            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+          />
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Setting up Apollo Server</Heading>
@@ -414,17 +424,20 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>GraphQL Playground 😍</Heading>
-          <div
-            className="glitch-embed-wrap"
-            style={{ height: '631px', width: '100%', margin: '50px 0 0 0' }}
-          >
-            <iframe
-              src="https://glitch.com/embed/#!/embed/fullstack-workshop-server?path=src/server.js&previewSize=100"
-              alt="fullstack-workshop-server on glitch"
-              style={{ height: '100%', width: '100%', border: 0 }}
-            />
-          </div>
+          <Heading>GraphQL Playground</Heading>
+          <iframe
+            src="https://codesandbox.io/embed/github/apollographql/fullstack-workshop-server/tree/master/?fontsize=14"
+            title="graphql-server-workshop"
+            style={{
+              width: '100%',
+              height: '500px',
+              border: '0',
+              borderRadius: '4px',
+              overflow: 'hidden',
+              marginTop: '50px',
+            }}
+            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+          />
         </Slide>
         <Slide>
           <Heading>Server checkpoint 2/7 🚦</Heading>
