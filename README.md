@@ -8,7 +8,6 @@ Since we have a lot of material to cover, we're going to complete all the exerci
 
 Here are the accounts you'll need for today:
 - [Apollo Engine](https://engine.apollographql.com/)
-- [Glitch](https://glitch.com/)
 - [CodeSandbox](https://codesandbox.io/)
 
 You'll also need to install [Apollo DevTools for Chrome](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm). If you have all 4 of these things, then we're ready to begin!
