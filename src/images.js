@@ -31,6 +31,9 @@ import validation from './assets/schema-validation.png';
 import security from './assets/security.png';
 import singleSource from './assets/single-source.png';
 import unifiedInterface from './assets/unified-interface.png';
+import principled from './assets/principled.png';
+import cheatsheet from './assets/cheatsheet.png';
+import dataloader from './assets/dataloader.png';
 
 export default {
   apolloBkgr,
@@ -66,4 +69,7 @@ export default {
   security,
   singleSource,
   unifiedInterface,
+  principled,
+  cheatsheet,
+  dataloader,
 };

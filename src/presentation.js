@@ -52,7 +52,7 @@ export default class Presentation extends React.Component {
       >
         <Slide bgImage={images.apolloBkgr}>
           <Text bold textColor="tertiary" textSize={size.large}>
-            Welcome SurveyMonkey! 🐵
+            Welcome!
           </Text>
           <Text bold textColor="primary" margin="30px 0 0 0" textSize="2.1em">
             Please navigate to:
@@ -89,7 +89,7 @@ export default class Presentation extends React.Component {
                 @peggyrayzis
               </Text>
               <Text margin="20px 0px 0px 30px" textColor="primary">
-                Engineering Manager
+                Developer Experience
               </Text>
             </Layout.Column>
           </div>
@@ -142,7 +142,7 @@ export default class Presentation extends React.Component {
           <Layout.Row>
             {[
               {
-                time: 'Morning',
+                time: 'Day 1',
                 header: 'Apollo Server',
                 items: [
                   'Schema building',
@@ -152,7 +152,7 @@ export default class Presentation extends React.Component {
                 ],
               },
               {
-                time: 'Afternoon',
+                time: 'Day 2',
                 header: 'Apollo Client',
                 items: [
                   'Query components',
@@ -198,7 +198,7 @@ export default class Presentation extends React.Component {
           <Text textSize={size.small}>1. Confirm you have:</Text>
           <List>
             {[
-              'Apollo Engine account',
+              'Apollo account',
               'Glitch account',
               'CodeSandbox account',
               'Apollo DevTools for Chrome',
@@ -373,7 +373,7 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 1/6 🚦</Heading>
+          <Heading>Server checkpoint 1/7 🚦</Heading>
           <List>
             {[
               'What is GraphQL?',
@@ -427,7 +427,7 @@ export default class Presentation extends React.Component {
           </div>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 2/6 🚦</Heading>
+          <Heading>Server checkpoint 2/7 🚦</Heading>
           <List>
             {[
               'Setting up Apollo Server',
@@ -466,6 +466,22 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
+          <Heading>Agile schema development</Heading>
+          <Text margin="20px 0 40px" textSize={size.extraSmall}>
+            Check out{' '}
+            <Link href="http://www.principledgraphql.com">
+              principledgraphql.com
+            </Link>{' '}
+            for best practices distilled from our experiences with customers on
+            how to architect your graph API.
+          </Text>
+          <Image
+            src={images.principled}
+            width="80%"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
           <Heading>Schema driven development</Heading>
           <Text margin="20px 0 40px" textSize={size.extraSmall}>
             Design it based on the needs of your UI, but try to make it general
@@ -479,6 +495,7 @@ export default class Presentation extends React.Component {
             style={{ alignSelf: 'center' }}
           />
         </Slide>
+        <Slide bgImage={images.cheatsheet} />
         <Slide>
           <Heading>👩🏼‍💻 Queries and mutations</Heading>
           <Text margin="20px 0 20px" textSize={size.extraSmall}>
@@ -534,19 +551,20 @@ export default class Presentation extends React.Component {
         <Slide>
           <Heading>💪 Write the Movie type</Heading>
           <Text margin="20px 0 20px" textSize={size.extraSmall}>
-            Try writing the Movie type on your own. If you get stuck, check out
-            the{' '}
+            Try writing the Movie type on your own by navigating to{' '}
+            <Code>src/schema.js</Code> and following the instructions. If you
+            get stuck, check out the{' '}
             <Link href="http://graphql.org/learn/schema/">
               graphql.org docs
-            </Link>
-            .
+            </Link>{' '}
+            or the <Link href="http://devhints.io/graphql">cheatsheet</Link>.
           </Text>
           <List ordered>
             {[
               'Write the Movie type in schema.js',
-              'The poster field should have an argument of size',
+              'The poster field should have an argument that is the Size type',
               'The genres field is non-nullable',
-              'The cast field returns an array of object types',
+              'The cast field returns an array of Cast types',
               'Bonus: Explore your schema in GraphQL Playground when you finish',
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
@@ -556,7 +574,32 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 3/6 🚦</Heading>
+          <Heading>Schema directives</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            GraphQL comes with several default schema directives that can be
+            added to fields in your schema. You can also create{' '}
+            <Link href="https://www.apollographql.com/docs/apollo-server/features/creating-directives">
+              custom schema directives
+            </Link>{' '}
+            for use cases like authentication, formatting dates,
+            internationalization, and more.
+          </Text>
+          <Layout.Row>
+            <List>
+              {[
+                '@deprecated(reason: String): Deprecates field with a message ',
+                `@skip(if: Boolean): Skips calling this field's resolver if true`,
+                '@include(if: Boolean): Calls resolver for this field if true',
+              ].map(item => (
+                <ListItem key={item} textSize={size.small}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Layout.Row>
+        </Slide>
+        <Slide>
+          <Heading>Server checkpoint 3/7 🚦</Heading>
           <List>
             {[
               'Schema driven development',
@@ -621,6 +664,46 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
+          <Heading>Partial query caching</Heading>
+          <Text margin="20px 0 20px" textSize={size.extraSmall}>
+            The REST data source automatically sets up a resource cache for you,
+            which is in-memory by default. It can be persisted via Memcached,
+            Redis, or any other library of your choice. This resource cache
+            solves the n+1 query problem (pictured below) and nearly eliminates
+            the need for using DataLoader.
+          </Text>
+          <Image src={images.dataloader} width="100%" />
+        </Slide>
+        <Slide>
+          <Heading>Server checkpoint 4/7 🚦</Heading>
+          <List>
+            {['REST Data Source', 'Partial query caching'].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>GraphQL context</Heading>
+          <Text margin="40px 0 20px 0" textSize={size.extraSmall}>
+            All GraphQL requests share the same context object. The{' '}
+            <Code>ApolloServer</Code> constructor has a context property that is
+            a function with access to the request itself.
+          </Text>
+          <Appear>
+            <List>
+              {[
+                'Useful for passing authentication scope, database connections, and custom fetch functions',
+                'Resolvers should never modify the context',
+                'The context property on ApolloServer is a function with access to the request',
+              ].map(item => (
+                <ListItem key={item} textSize={size.small}>
+                  {item}
+                </ListItem>
+              ))}
+            </List>
+          </Appear>
+        </Slide>
+        <Slide>
           <Heading>👩🏼‍💻 Authentication</Heading>
           <Text margin="40px 0 20px 0" textSize={size.extraSmall}>
             Each GraphQL request has a context object that's shared among its
@@ -643,13 +726,9 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 4/6 🚦</Heading>
+          <Heading>Server checkpoint 5/7 🚦</Heading>
           <List>
-            {[
-              'Apollo Server data sources',
-              'Authentication',
-              'GraphQL context',
-            ].map(item => (
+            {['Authentication', 'GraphQL context'].map(item => (
               <ListItem key={item}>{item}</ListItem>
             ))}
           </List>
@@ -728,7 +807,7 @@ export default class Presentation extends React.Component {
             There are many ways to organize your graph API's project structure.
             We recommend starting small by putting your schema in one file and
             breaking it out over time. For teams who want to compose multiple
-            schemas into one, we recommend the Apollo Gateway.
+            schemas into one graph, we recommend the Apollo Gateway.
           </Text>
           <Layout.Row align="center">
             <Image src={images.spectrum} width="400px" />
@@ -758,7 +837,7 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>Server checkpoint 5/6 🚦</Heading>
+          <Heading>Server checkpoint 6/7 🚦</Heading>
           <List>
             {[
               'Resolver functions',
@@ -800,6 +879,11 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading>👩🏼‍💻 Schema registry</Heading>
+          <Text margin="20px 0 50px 0" textSize={size.extraSmall}>
+            In production, we recommend integrating the apollo service:push
+            command into your CI/CD workflow. You also have the ability to set
+            schema tags for different versions (staging vs. prod).
+          </Text>
           <List ordered>
             {[
               'Visit engine.apollographql.com and login',
@@ -808,26 +892,18 @@ export default class Presentation extends React.Component {
               'Create a service, then copy the API key',
               'Run npx apollo service:push key="YOUR_KEY"',
             ].map(item => (
-              <ListItem textSize={size.medium} key={item}>
+              <ListItem textSize={size.small} key={item}>
                 {item}
               </ListItem>
             ))}
           </List>
         </Slide>
         <Slide>
-          <Layout.Row>
-            <Image src={images.validation} width="40%" />
-            <List margin="0px 0px 0px 50px" style={{ alignSelf: 'center' }}>
-              {[
-                'Schema change validation prevents breaking changes',
-                'Know if changes break registered clients',
-              ].map(item => (
-                <ListItem textSize={size.medium} key={item}>
-                  {item}
-                </ListItem>
-              ))}
-            </List>
-          </Layout.Row>
+          <Image
+            src={images.validation}
+            width="90%"
+            style={{ alignSelf: 'center' }}
+          />
         </Slide>
         <Slide>
           <Heading>Securing your graph API</Heading>
@@ -846,10 +922,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading>Server checkpoint 6/6 🚦</Heading>
+          <Heading>Server checkpoint 7/7 🚦</Heading>
           <List>
             {[
-              'Pushing your schema to Apollo Engine',
+              'Pushing to the schema registry',
               'Validating schema changes',
               'Securing your graph API',
             ].map(item => (
