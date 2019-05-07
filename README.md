@@ -31,44 +31,23 @@ Welcome to the server portion of the workshop! For the morning session, we will 
 - `resolvers/`: Write your resolvers for each type in this folder
 - `data-sources/`: Your data sources separate out the data fetching logic from your resolvers
 
-### Running on Glitch
+### Running on CodeSandbox
 
-<!-- Remix Button -->
-<a href="https://glitch.com/edit/#!/remix/fullstack-workshop-server">
-  <img src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix%402x.png?1513093958726" alt="remix button" aria-label="remix" height="33">
-</a>
+[![Edit graphql-server-workshop](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/00-start/?fontsize=14)
 
-1. Click this button to remix the project
+1. Click the button above to navigate to the CodeSandbox. Fork it to your account by clicking Fork in the top menu.
+2. That's it! CodeSandbox features HMR, a console, and a test runner. It's pretty awesome. 😍 If you see an error message, don't worry - it's because we haven't built our server yet.
 
-2. On the left hand menu in Glitch, click Status > Console
+### Sandboxes
 
-3. Confirm you're tracking origin by running `git remote -v`. If you are, then you can skip step #4 and go to step #5
+If you get stuck at any time, click the sandbox for the exercise you want and fork it.
 
-4. If you are not tracking origin, run this command:
-
-```bash
-git remote add origin https://github.com/apollographql/fullstack-workshop-server && git fetch origin && git checkout 00-start && refresh
-```
-
-5. If you are tracking origin, run this command: `git fetch origin && git checkout 00-start && refresh`
-
-6. Navigate to `server.js`. You should not see any `ApolloServer` setup code. If that's the case, then you're good to go!
-
-### Branches
-- `00-start`: Your starting point
-- `01-apollo-server`: Setting up Apollo Server
-- `02-schema`: Writing your schema
-- `03-data-sources`: Building data sources
-- `04-authentication`: Implementing authentication
-- `05-final`: Hooking everything up to resolvers
-
-### FAQ
-- **I didn't complete the last exercise and want to catch up**: No worries! I've created branches for all the steps in the workshop so everyone can go at their own pace. To check out the completed solution for your exercise, look for the branch above. In your Glitch terminal or local terminal, replace `01-apollo-server` with the exercise you're on:
-
-```bash
-git stash
-git checkout 01-apollo-server
-```
+- [`00-start`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/00-start): Your starting point
+- [`01-apollo-server`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/01-apollo-server): Setting up Apollo Server
+- [`02-schema`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/02-schema): Writing your schema
+- [`03-data-sources`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/03-data-sources): Building data sources
+- [`04-authentication`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server/tree/04-authentication): Implementing authentication
+- [`05-final`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-server): Hooking everything up to resolvers
 
 ### Helpful links
 - [Apollo platform docs](https://www.apollographql.com/docs/)
