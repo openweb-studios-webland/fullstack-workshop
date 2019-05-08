@@ -85,7 +85,7 @@ Welcome to the client portion of the workshop! We will be building a React app t
 - [`02-queries`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/02-queries): Writing Query components and pagination
 - [`03-adv-queries`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/03-adv-queries): Writing Query components with fragments and fetchPolicy
 - [`04-login`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/04-login): Writing Mutation components for login & authentication
-- [`05-local-state`](https://github.com/apollographql/fullstack-workshop-client/tree/05-local-state): Local state management with Apollo Client
+- [`05-local-state`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/05-local-state): Local state management with Apollo Client
 - [`06-final`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client): Writing Mutation components that update the cache & use optimistic UI
 
 ### FAQ
