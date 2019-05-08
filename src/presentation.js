@@ -575,7 +575,7 @@ export default class Presentation extends React.Component {
           <List ordered>
             {[
               'Write the Movie type in schema.js',
-              'The poster field should have an argument that is the Size type',
+              'The poster field should have an argument that is size',
               'The genres field is non-nullable',
               'The cast field returns an array of Cast types',
               'Bonus: Explore your schema in GraphQL Playground when you finish',
@@ -1016,14 +1016,14 @@ export default class Presentation extends React.Component {
           </Text>
           <List ordered margin="0px">
             <ListItem textSize={size.small}>
-              <Code>npm install apollo-boost graphql-tag graphql --save</Code>
+              <Code>npm install apollo-boost graphql --save</Code>
             </ListItem>
             <ListItem textSize={size.small}>
               <Code>{`import ApolloClient from 'apollo-boost';`}</Code>
             </ListItem>
             <ListItem textSize={size.small}>
               <Code>
-                {`const client = new ApolloClient({ uri: 'https://fullstack-workshop-server.glitch.me/graphql' });`}
+                {`const client = new ApolloClient({ uri: 'https://6v1lkoqpy3.sse.codesandbox.io/' });`}
               </Code>
             </ListItem>
             <ListItem textSize={size.small}>
@@ -1069,7 +1069,22 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
         <Slide>
-          <Heading>Client checkpoint 1/4 🚦</Heading>
+          <Heading>Migrating off Apollo Boost</Heading>
+          <Text margin="30px 0" textSize={size.extraSmall}>
+            In a production app, you will probably install all of the separate
+            pieces of Apollo Client manually instead of using Apollo Boost. Some
+            reasons to not use Boost: customizing the link chain, Subscriptions,
+            and using an alternative cache.
+          </Text>
+          <CodePane
+            source={client.setupNoBoost}
+            style={{ maxWidth: 'none' }}
+            theme="light"
+            lang="js"
+          />
+        </Slide>
+        <Slide>
+          <Heading>Client checkpoint 1/6 🚦</Heading>
           <List>
             {[
               'What is Apollo Client?',
@@ -1162,6 +1177,58 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
+          <Heading>💪 Query components #1</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Now it's your turn! Try building a Query component to fetch data
+            from our GraphQL API. If you get stuck, you can view docs on props
+            and the render prop function{' '}
+            <Link href="https://www.apollographql.com/docs/react/essentials/queries.html#api">
+              here
+            </Link>
+            .
+          </Text>
+          <List ordered>
+            {[
+              'Navigate to components/MovieList and read the Queries Part 1 instructions. No need to do Part 2!',
+              `Don't worry about the liked movies query yet`,
+              `Delete the seed data when you're finished`,
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>💪 Query components #2</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            The object passed into the Query component's render prop function
+            contains more than just your query's data! It also has helpful
+            functions for polling, refetching, pagination, and more! Read the
+            Queries Part 2 instructions and wire up the Load More button for
+            pagination.
+          </Text>
+          <CodePane
+            source={client.fetchMore}
+            lang="javascript"
+            textSize="1.2em"
+            style={{ maxWidth: 'none' }}
+            theme="light"
+          />
+        </Slide>
+        <Slide>
+          <Heading>Client checkpoint 2/6 🚦</Heading>
+          <List>
+            {[
+              'Fetching data with Query components',
+              'Pagination with fetchMore',
+              'Apollo DevTools debugging strategies',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
           <Heading>Fragments</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             If you have two queries that share a lot of the same fields, you
@@ -1188,21 +1255,25 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>💪 Query components</Heading>
+          <Heading>💪 Query components #3 </Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
-            Now it's your turn! Try building some Query components to fetch data
-            from our GraphQL API. If you get stuck, you can view docs on props
+            It's time to wire up <Code>src/components/MoviesList.js</Code> for
+            the liked movies query. If you get stuck, you can view docs on props
             and the render prop function{' '}
             <Link href="https://www.apollographql.com/docs/react/essentials/queries.html#api">
+              here
+            </Link>
+            . The fetchPolicy docs are{' '}
+            <Link href="https://www.apollographql.com/docs/react/api/react-apollo#graphql-config-options-fetchPolicy">
               here
             </Link>
             .
           </Text>
           <List ordered>
             {[
-              'Navigate to components/MovieList and read the Part 1 instructions. No need to do Part 2!',
-              `Recall what we just learned about fragments to share data between the two queries`,
-              `Delete the seed data when you're finished`,
+              'Navigate to components/MovieList and read the Advanced Queries instructions.',
+              `Use a fragment to share fields between the two queries`,
+              `Extra Credit: Read the docs on fetchPolicy`,
             ].map(item => (
               <ListItem key={item} textSize={size.small}>
                 {item}
@@ -1211,46 +1282,36 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading>💪 Pagination</Heading>
+          <Heading>fetchPolicy</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
-            The object passed into the Query component's render prop function
-            contains more than just your query's data! It also has helpful
-            functions for polling, refetching, pagination, and more!
+            Sometimes it's useful to control whether the cache should be used
+            for a query or whether a network request should be made. The default
+            fetchPolicy is cache-first. You can set fetchPolicy as a prop on{' '}
+            <Code>{`<Query/>`}</Code>
           </Text>
-          <CodePane
-            source={client.fetchMore}
-            lang="javascript"
-            textSize="1.2em"
-            style={{ maxWidth: 'none' }}
-            theme="light"
-          />
-        </Slide>
-        <Slide>
-          <Heading>Client checkpoint 2/4 🚦</Heading>
           <List>
             {[
-              'Fetching data with Query components',
-              'Pagination with fetchMore',
-              'Apollo DevTools debugging strategies',
+              'cache-first: Only make a network request if there is no query in the cache',
+              `cache-and-network: Use the cache first to fulfill data, but always make a network request`,
+              `no-cache: Always make a network request, but never use the cache`,
             ].map(item => (
-              <ListItem key={item}>{item}</ListItem>
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
             ))}
           </List>
         </Slide>
         <Slide>
-          <Heading>Authentication</Heading>
-          <Text margin="20px 0" textSize={size.extraSmall}>
-            To send authorization headers to the GraphQL server, set them on the
-            context in Apollo Boost's request function. The request function is
-            called every time an operation executes and the context is shared
-            among all links in your network stack.
-          </Text>
-          <CodePane
-            style={{ maxWidth: 'none' }}
-            source={client.auth}
-            theme="light"
-            lang="javascript"
-          />
+          <Heading>Client checkpoint 3/6 🚦</Heading>
+          <List>
+            {[
+              'Fragments',
+              'Complex Query components',
+              'Using fetchPolicy for fine-grained network control',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
         </Slide>
         <Slide>
           <Heading>Mutation components</Heading>
@@ -1295,7 +1356,7 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading>💪 Mutation components (pt. 1)</Heading>
+          <Heading>💪 Mutation components #1</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
             Now it's your turn! Try building some Mutation components to update
             data in our GraphQL API. If you get stuck, you can view docs on
@@ -1316,6 +1377,92 @@ export default class Presentation extends React.Component {
               </ListItem>
             ))}
           </List>
+        </Slide>
+        <Slide>
+          <Heading>Client checkpoint 4/6 🚦</Heading>
+          <List>
+            {['Simple Mutation components', 'The onCompleted prop'].map(
+              item => (
+                <ListItem key={item}>{item}</ListItem>
+              ),
+            )}
+          </List>
+        </Slide>
+        <Slide>
+          <Image
+            margin="50px 0 0 0"
+            src={images.singleSource}
+            width="80%"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
+          <Image
+            src={images.unifiedInterface}
+            width="80%"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
+          <Heading>Client schemas</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Client schemas are primarily used for tooling benefits (Apollo VS
+            Code, Apollo CLI). They are not used for runtime validation like on
+            the server. Just like on the server, we recommend starting with your
+            schema first when managing local state with Apollo.
+          </Text>
+          <Image
+            src={images.clientSchema}
+            width="60%"
+            style={{ alignSelf: 'center' }}
+          />
+        </Slide>
+        <Slide>
+          <Heading>💪 Local state management</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            Navigate to <Code>src/components/LoginForm.js</Code> and read the
+            local state management exercise instructions. You will be using the
+            isLoggedIn property we just created a client resolver and schema for
+            in src/index.js.
+          </Text>
+          <List>
+            {[
+              'Navigate to components/LoginForm and read the instructions',
+              `On login, save the token to localStorage. On logout, clear the token from localStorage.`,
+              `Use a direct write to write the isLoggedIn data to the cache`,
+            ].map(item => (
+              <ListItem key={item} textSize={size.small}>
+                {item}
+              </ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>Client checkpoint 5/6 🚦</Heading>
+          <List>
+            {[
+              'Local state management',
+              'Client schemas',
+              'Direct writes vs. resolvers',
+            ].map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
+        </Slide>
+        <Slide>
+          <Heading>👩🏼‍💻 Authentication</Heading>
+          <Text margin="20px 0" textSize={size.extraSmall}>
+            To send authorization headers to the GraphQL server, set them on the
+            context in Apollo Boost's request function. The request function is
+            called every time an operation executes and the context is shared
+            among all links in your network stack.
+          </Text>
+          <CodePane
+            style={{ maxWidth: 'none' }}
+            source={client.auth}
+            theme="light"
+            lang="javascript"
+          />
         </Slide>
         <Slide>
           <Heading>Optimistic mutations</Heading>
@@ -1346,18 +1493,15 @@ export default class Presentation extends React.Component {
           </Layout.Row>
         </Slide>
         <Slide>
-          <Heading>💪 Mutation components (pt. 2)</Heading>
+          <Heading>💪 Mutation components #2</Heading>
           <Text margin="20px 0" textSize={size.extraSmall}>
-            Let's build a Mutation component with optimistic UI. If you get
-            stuck, you can view docs on props and the render prop function{' '}
-            <Link href="https://www.apollographql.com/docs/react/essentials/mutations.html#api">
-              here
-            </Link>
-            .
+            Last exercise of the day! Navigate to{' '}
+            <Code>src/components/MovieTile.js</Code> to wire up the toggleLike
+            functionality.
           </Text>
           <List>
             {[
-              'Navigate to components/MovieTile and read the Part 2 instructions',
+              'Navigate to components/MovieTile and read the instructions',
               `Try to add an optimistic update to the toggleLike mutation`,
               `Use Apollo DevTools if you get stuck`,
             ].map(item => (
@@ -1384,39 +1528,12 @@ export default class Presentation extends React.Component {
           />
         </Slide>
         <Slide>
-          <Heading>Client checkpoint 3/4 🚦</Heading>
+          <Heading>Client checkpoint 6/6 🚦</Heading>
           <List>
             {[
               'Authenticating a request',
-              'Building Mutation components',
+              'Optimistic UI',
               'Updating data in the Apollo cache',
-            ].map(item => (
-              <ListItem key={item}>{item}</ListItem>
-            ))}
-          </List>
-        </Slide>
-        <Slide>
-          <Image
-            margin="50px 0 0 0"
-            src={images.singleSource}
-            width="80%"
-            style={{ alignSelf: 'center' }}
-          />
-        </Slide>
-        <Slide>
-          <Image
-            src={images.unifiedInterface}
-            width="80%"
-            style={{ alignSelf: 'center' }}
-          />
-        </Slide>
-        <Slide>
-          <Heading>Client checkpoint 4/4 🚦</Heading>
-          <List>
-            {[
-              'What is apollo-link-state?',
-              'Writing initial state to the cache',
-              'Direct writes vs. resolvers',
             ].map(item => (
               <ListItem key={item}>{item}</ListItem>
             ))}
@@ -1427,7 +1544,7 @@ export default class Presentation extends React.Component {
           <List>
             {[
               'Add additional data to the movie card',
-              'Convert setState calls to link-state',
+              'Handle errors in a more sophisticated way',
               'Build out more of your schema',
               'Write tests by mocking your server',
             ].map(item => (

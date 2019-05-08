@@ -34,6 +34,7 @@ import unifiedInterface from './assets/unified-interface.png';
 import principled from './assets/principled.png';
 import cheatsheet from './assets/cheatsheet.png';
 import dataloader from './assets/dataloader.png';
+import clientSchema from './assets/client-schema.png';
 
 export default {
   apolloBkgr,
@@ -72,4 +73,5 @@ export default {
   principled,
   cheatsheet,
   dataloader,
+  clientSchema,
 };

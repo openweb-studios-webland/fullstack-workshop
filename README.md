@@ -1,6 +1,6 @@
 # Fullstack GraphQL Workshop
 
-Welcome! Today, we're going to learn how to build a fullstack GraphQL app using Apollo Server, Apollo Engine, and Apollo Client. Let's get started! 🚀
+Welcome! Today, we're going to learn how to build a fullstack GraphQL app using the Apollo platform. Let's get started! 🚀
 
 ## Setup instructions
 
@@ -18,11 +18,11 @@ If you need to reference the slides, you can view them [here](https://fullstack-
 
 ## Survey
 
-Please take the post-workshop survey!! Your honesty is important to helping me improve for next time: https://goo.gl/forms/tf4JwUi0lSrMYgKQ2
+Please take the post-workshop survey!! Your honesty is important to helping me improve for next time: https://forms.gle/17ktSPBNo82VwuPFA
 
-## Apollo Server (Morning)
+## Apollo Server (Day 1)
 
-Welcome to the server portion of the workshop! For the morning session, we will be building a GraphQL server based on the [Movie DB REST API](https://developers.themoviedb.org/3/getting-started/introduction).
+Welcome to the server portion of the workshop! We will be building a GraphQL server based on the [Movie DB REST API](https://developers.themoviedb.org/3/getting-started/introduction).
 
 ### File Structure (in order of importance):
 - `server.js`: Where all the magic happens to set up Apollo Server
@@ -61,9 +61,9 @@ If you get stuck at any time, click the sandbox for the exercise you want and fo
 3. Install the dependencies: `npm i`
 4. Start the server: `npm start`. Your server will be running on port 3000. Your GraphQL server is available at `localhost:3000/graphql` and your GraphQL Playground is available at `localhost:3000/graphql`.
 
-## Apollo Client (Afternoon)
+## Apollo Client (Day 2)
 
-Welcome to the client portion of the workshop! For the morning session, we will be building a React app that pulls a list of movies, filters them by type, and allows you to favorite them after you've been logged in. The app is backed by Create React App and Apollo Client.
+Welcome to the client portion of the workshop! We will be building a React app that pulls a list of movies, filters them by type, and allows you to favorite them after you've been logged in. The app is backed by Create React App and Apollo Client.
 
 ### File Structure (in order of importance):
 - `index.js`: Where we set up Apollo Client
@@ -82,11 +82,11 @@ Welcome to the client portion of the workshop! For the morning session, we will 
 ### Sandboxes
 - [`00-start`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/00-start): Your starting point
 - [`01-apollo-client`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/01-apollo-client): Setting up Apollo Boost and React Apollo
-- [`02-queries`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/02-queries): Writing Query components
-- [`03-pagination`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/03-pagination): Writing Query components with Pagination
+- [`02-queries`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/02-queries): Writing Query components and pagination
+- [`03-adv-queries`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/03-adv-queries): Writing Query components with fragments and fetchPolicy
 - [`04-login`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/04-login): Writing Mutation components for login & authentication
-- [`05-mutations`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client/tree/05-mutations): Writing Mutation components & optimistic UI
-- [`06-final`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client): Local state management with apollo-link-state
+- [`05-local-state`](https://github.com/apollographql/fullstack-workshop-client/tree/05-local-state): Local state management with Apollo Client
+- [`06-final`](https://codesandbox.io/s/github/apollographql/fullstack-workshop-client): Writing Mutation components that update the cache & use optimistic UI
 
 ### FAQ
 - **I didn't complete the last exercise and want to catch up**: No worries! Each branch is its own CodeSandbox so everyone can go at their own pace. To check out the completed solution for your exercise, just click the CodeSandbox links above.

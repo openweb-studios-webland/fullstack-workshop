@@ -21,6 +21,18 @@ const GET_DOG_PHOTO = gql\`
 
 `;
 
+export const setupNoBoost = `import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: 'https://6v1lkoqpy3.sse.codesandbox.io/',
+    credentials: 'same-origin'
+  }),
+  cache: new InMemoryCache()
+});`;
+
 export const queryComponent = `const DogPhoto = ({ breed }) => (
   <Query query={GET_DOG_PHOTO} variables={{ breed }}>
     {({ loading, error, data }) => {
@@ -42,7 +54,7 @@ export const fetchMore = `fetchMore({
 })`;
 
 export const auth = `const client = new ApolloClient({
-  uri: 'https://fullstack-workshop-server.glitch.me/graphql',
+  uri: 'https://6v1lkoqpy3.sse.codesandbox.io/',
   request: operation => {
     operation.setContext(context => ({
       headers: {
